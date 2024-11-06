@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhxt4kceomvky"]
+
+[ext_resource type="Texture2D" uid="uid://ca0xe47oyhkap" path="res://bike/sprites/Untitled_Artwork.png" id="1_wpvsh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ah0c4"]
+atlas = ExtResource("1_wpvsh")
+region = Rect2(151, 64, 15, 17)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rrb0t"]
+radius = 3.03999
+height = 20.1641
+
+[node name="shin" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_ah0c4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.724048
+shape = SubResource("CapsuleShape2D_rrb0t")

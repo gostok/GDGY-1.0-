@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://duyjqxp4t2gpt"]
+
+[ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="1_sxux5"]
+
+[node name="Test_scene" type="Node2D"]
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tiles"]
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tiles/StaticBody2D"]
+polygon = PackedVector2Array(10.5429, 117.492, 19.7353, 270.227, 399.452, 268.106, 619.362, 224.972, 621.483, 358.615, 794.017, 360.03, 670.274, 421.548, 31.7561, 393.971, 4.88608, 202.345)
+
+[node name="Biker" parent="." instance=ExtResource("1_sxux5")]
+position = Vector2(104.697, 232.295)

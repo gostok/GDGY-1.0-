@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://duyjqxp4t2gpt"]
+
+[ext_resource type="PackedScene" uid="uid://d51kt4sbjeyc" path="res://bike/scripts/Bike.tscn" id="1_nqpc3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6g5us"]
+size = Vector2(929.774, 171)
+
+[node name="Test_scene" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_left = 43.0
+offset_top = 323.0
+offset_right = 973.0
+offset_bottom = 494.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(507.804, 408.119)
+shape = SubResource("RectangleShape2D_6g5us")
+
+[node name="Bike" parent="." instance=ExtResource("1_nqpc3")]
+position = Vector2(130.8, 302.396)
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tiles"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tiles/StaticBody2D"]
+position = Vector2(241.285, 305.575)
+polygon = PackedVector2Array(-26.5529, 13.6934, 17.7693, -8.80182, 29.7964, -9.02454, 36.4782, -20.1608, 51.178, -20.3835, 64.3188, -35.5288, 68.5505, -35.5288, 75.0096, 15.4752, 81.4686, -45.5514, 89.0412, -48.8923, 89.9321, -30.8516, 121.336, -28.6243, 163.431, -43.3242, 180.73, 13.6934, 196.766, -54.0149, 209.016, -62.033, 234.629, -65.8193, 247.547, -74.5056, 281.624, -43.5469, 307.905, -1.00647, 314.364, 14.807)

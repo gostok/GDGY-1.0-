@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://cu2m52776k168"]
+
+[ext_resource type="PackedScene" uid="uid://bj252rp52a3qg" path="res://bike/scripts/bike_second/head/head.tscn" id="1_6cjw8"]
+[ext_resource type="PackedScene" uid="uid://dopyawhmurif1" path="res://bike/scripts/bike_second/body_player/body_player.tscn" id="2_vl8bt"]
+[ext_resource type="PackedScene" uid="uid://d32jafa2qkmfw" path="res://bike/scripts/bike_second/hand/hand.tscn" id="3_naik3"]
+[ext_resource type="PackedScene" uid="uid://yn3gtrf63o7" path="res://bike/scripts/bike_second/palm/palm.tscn" id="4_23w8w"]
+[ext_resource type="PackedScene" uid="uid://cr331wn85tf5o" path="res://bike/scripts/bike_second/hip/hip.tscn" id="5_i3l4j"]
+[ext_resource type="PackedScene" uid="uid://bhxt4kceomvky" path="res://bike/scripts/bike_second/shin/shin.tscn" id="6_dngjr"]
+[ext_resource type="PackedScene" uid="uid://dx7dmeu4dhrqq" path="res://bike/scripts/bike_second/foot/foot.tscn" id="7_5yw6m"]
+
+[node name="player" type="Node2D"]
+
+[node name="skelet_player" type="Node2D" parent="."]
+
+[node name="pins" type="Node2D" parent="skelet_player"]
+
+[node name="HeadHolder" type="PinJoint2D" parent="skelet_player/pins"]
+position = Vector2(7, -41)
+
+[node name="head" parent="skelet_player/pins/HeadHolder" instance=ExtResource("1_6cjw8")]
+
+[node name="Body_playerHolder" type="PinJoint2D" parent="skelet_player/pins"]
+position = Vector2(-9, -25)
+
+[node name="body_player" parent="skelet_player/pins/Body_playerHolder" instance=ExtResource("2_vl8bt")]
+
+[node name="--------------------------------" type="Node2D" parent="skelet_player/pins"]
+
+[node name="HandHolder" type="PinJoint2D" parent="skelet_player/pins"]
+position = Vector2(7, -25)
+
+[node name="hand" parent="skelet_player/pins/HandHolder" instance=ExtResource("3_naik3")]
+
+[node name="PalmHolder" type="PinJoint2D" parent="skelet_player/pins"]
+position = Vector2(17, -18)
+
+[node name="palm" parent="skelet_player/pins/PalmHolder" instance=ExtResource("4_23w8w")]
+
+[node name="-------------------------------" type="Node2D" parent="skelet_player/pins"]
+
+[node name="HipHolder" type="PinJoint2D" parent="skelet_player/pins"]
+position = Vector2(-9, -9)
+
+[node name="hip" parent="skelet_player/pins/HipHolder" instance=ExtResource("5_i3l4j")]
+
+[node name="ShinHolder" type="PinJoint2D" parent="skelet_player/pins"]
+position = Vector2(-7, 6)
+
+[node name="shin" parent="skelet_player/pins/ShinHolder" instance=ExtResource("6_dngjr")]
+
+[node name="FootHolder" type="PinJoint2D" parent="skelet_player/pins"]
+position = Vector2(-5, 17)
+
+[node name="foot" parent="skelet_player/pins/FootHolder" instance=ExtResource("7_5yw6m")]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="skelet_player"]

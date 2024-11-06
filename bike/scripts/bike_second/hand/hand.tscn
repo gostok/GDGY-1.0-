@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d32jafa2qkmfw"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i242n"]
+load_path = "res://.godot/imported/Untitled_Artwork.png-2d47639af9eb403791e4bcffc5dc56ed.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1sgh"]
+atlas = SubResource("CompressedTexture2D_i242n")
+region = Rect2(184, 37, 13, 14)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6uirx"]
+radius = 2.55391
+height = 16.2225
+
+[node name="hand" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_u1sgh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -0.804388
+shape = SubResource("CapsuleShape2D_6uirx")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://duyjqxp4t2gpt"]
+
+[ext_resource type="PackedScene" uid="uid://w7jx37i122r6" path="res://bike/scripts/bike_second/bike_front.tscn" id="1_yeq6y"]
+
+[node name="Test_scene" type="Node2D"]
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tiles"]
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tiles/StaticBody2D"]
+polygon = PackedVector2Array(10.5429, 117.492, 19.7353, 270.227, 399.452, 268.106, 619.362, 224.972, 621.483, 358.615, 794.017, 360.03, 670.274, 421.548, 31.7561, 393.971, 4.88608, 202.345)
+
+[node name="Bike_Front" parent="." instance=ExtResource("1_yeq6y")]
+position = Vector2(55.475, 169.394)
+
+[node name="Camera2D" type="Camera2D" parent="Bike_Front"]
+zoom = Vector2(3.4, 3.4)
+position_smoothing_enabled = true

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx7dmeu4dhrqq"]
+
+[ext_resource type="Texture2D" uid="uid://bmixwl76p0dae" path="res://bike/sprites/Untitled_Artwork.png" id="1_5pyci"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le7jy"]
+atlas = ExtResource("1_5pyci")
+region = Rect2(275, 76, 6, 6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6dhw"]
+radius = 2.74248
+
+[node name="foot" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_le7jy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i6dhw")

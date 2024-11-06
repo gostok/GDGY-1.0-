@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://w7jx37i122r6"]
+
+[ext_resource type="Script" path="res://bike/scripts/bike_second/bike_front.gd" id="1_sdiir"]
+[ext_resource type="PackedScene" uid="uid://cejs3tvu6jpp4" path="res://bike/scripts/bike_second/wheel/wheel.tscn" id="2_l0vy4"]
+[ext_resource type="Texture2D" uid="uid://bmixwl76p0dae" path="res://bike/sprites/Untitled_Artwork.png" id="2_maygi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbda4"]
+atlas = ExtResource("2_maygi")
+
+[node name="Bike_Front" type="RigidBody2D"]
+mass = 97.0
+gravity_scale = 0.5
+script = ExtResource("1_sdiir")
+
+[node name="bike" type="Sprite2D" parent="." groups=["player"]]
+scale = Vector2(0.109, 0.125)
+texture = SubResource("AtlasTexture_lbda4")
+
+[node name="WheelHolder" type="PinJoint2D" parent="."]
+position = Vector2(-67.4965, 7.29051)
+node_a = NodePath("..")
+node_b = NodePath("wheel")
+softness = 0.05
+
+[node name="wheel" parent="WheelHolder" instance=ExtResource("2_l0vy4")]
+mass = 4.2
+
+[node name="WheelHolder2" type="PinJoint2D" parent="."]
+position = Vector2(85.3841, 39.0743)
+node_a = NodePath("..")
+node_b = NodePath("wheel")
+softness = 0.05
+
+[node name="wheel" parent="WheelHolder2" instance=ExtResource("2_l0vy4")]
+mass = 4.2

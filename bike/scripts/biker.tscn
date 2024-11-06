@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci8trx1sym8te"]
+
+[ext_resource type="Script" path="res://bike/scripts/biker.gd" id="1_1r8vo"]
+[ext_resource type="Texture2D" uid="uid://bmixwl76p0dae" path="res://bike/sprites/Untitled_Artwork.png" id="1_oybmf"]
+[ext_resource type="PackedScene" uid="uid://cejs3tvu6jpp4" path="res://bike/scripts/bike_second/wheel/wheel.tscn" id="2_qy3pc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6d270"]
+atlas = ExtResource("1_oybmf")
+region = Rect2(18, 45, 80, 37)
+
+[node name="Biker" type="RigidBody2D"]
+script = ExtResource("1_1r8vo")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-40, -11, -40, -11, -39, -13, -36.0532, -13.6167, -27.0274, -13.5577, -26.9684, -12.6138, -18.2376, -12.5548, -15.111, -12.6138, -14.875, -11.552, -11.9254, -11.611, -11.9254, -10.4901, -10.1557, -10.4901, -9.9197, -9.48725, -8.09095, -9.48725, -7.85498, -8.72035, -5.84924, -8.48439, -2.95863, -6.41966, -1.07088, -5.47579, 3.88446, -5.59377, 7.36499, -7.36353, 13.6772, -9.42826, 16.5678, -10.5491, 19.2224, -13.3807, 17.9836, -15.0325, 21.2281, -18.4541, 22.9979, -18.572, 22.9979, -16.5073, 24.8267, -16.5663, 25.0626, -17.5102, 27.8353, -17.5102, 30.136, -15.2685, 30.018, -11.552, 27.9532, -9.54625, 24.8857, -9.72322, 24.1188, -8.07144, 24.1635, -5.50686, 25.9504, -5.45431, 27.7898, -2.45862, 28.4731, -0.671709, 33.9915, -0.461485, 33.9915, 0.537079, 29.9972, 0.537079, 30.733, 2.74443, 39.8125, 16.1875, 39.75, 17.375, 38.25, 18.5, 37, 17.9375, 27.125, 3.5625, 21.75, 8.4375, 18.625, 13.0625, 17, 16.5625, 15.8125, 16.5625, 15.875, 11.5, 21.125, 5.4375, 26.0625, 0.75, 23.1875, -2.5625, 23, 1.5, 22, 3.4375, 12.9375, 12.4375, 10.9375, 13.4375, 2, 13.5625, -0.885406, 12.5, -7.01041, 5.5, -9.01041, 1.4375, -11.8229, -4.5625, -17.8854, -7.4375, -18.0104, -8.375, -23.0729, -8.4375, -23.0729, -9.5, -31.1354, -9.5, -31.0729, -10.5625, -40.0104, -10.375)
+
+[node name="bike_body" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_6d270")
+
+[node name="WheelHolder_Front" type="PinJoint2D" parent="."]
+position = Vector2(38, 17)
+
+[node name="wheel" parent="WheelHolder_Front" instance=ExtResource("2_qy3pc")]
+
+[node name="WheelHolder_Back" type="PinJoint2D" parent="."]
+position = Vector2(-25, 17)
+
+[node name="wheel" parent="WheelHolder_Back" instance=ExtResource("2_qy3pc")]

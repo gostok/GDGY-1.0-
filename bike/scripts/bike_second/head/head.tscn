@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj252rp52a3qg"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i242n"]
+load_path = "res://.godot/imported/Untitled_Artwork.png-2d47639af9eb403791e4bcffc5dc56ed.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srtbs"]
+atlas = SubResource("CompressedTexture2D_i242n")
+region = Rect2(178, 8, 19, 18)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjmvi"]
+radius = 8.65762
+
+[node name="head" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_srtbs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xjmvi")
