@@ -53,4 +53,34 @@ position = Vector2(-5, 17)
 
 [node name="foot" parent="skelet_player/pins/FootHolder" instance=ExtResource("7_5yw6m")]
 
-[node name="Skeleton2D" type="Skeleton2D" parent="skelet_player"]
+[node name="skelet" type="Node2D" parent="skelet_player"]
+
+[node name="head_body" type="PinJoint2D" parent="skelet_player/skelet"]
+position = Vector2(-1.41113, -34.0101)
+node_a = NodePath("../../pins/HeadHolder/head")
+node_b = NodePath("../../pins/Body_playerHolder/body_player")
+
+[node name="body_hand" type="PinJoint2D" parent="skelet_player/skelet"]
+position = Vector2(-0.891903, -30.2505)
+node_a = NodePath("../../pins/Body_playerHolder/body_player")
+node_b = NodePath("../../pins/HandHolder/hand")
+
+[node name="hand_palm" type="PinJoint2D" parent="skelet_player/skelet"]
+position = Vector2(13.8245, -19.3246)
+node_a = NodePath("../../pins/HandHolder/hand")
+node_b = NodePath("../../pins/PalmHolder/palm")
+
+[node name="body_hip" type="PinJoint2D" parent="skelet_player/skelet"]
+position = Vector2(-16.2757, -16.3459)
+node_a = NodePath("../../pins/Body_playerHolder/body_player")
+node_b = NodePath("../../pins/HipHolder/hip")
+
+[node name="hip_shin" type="PinJoint2D" parent="skelet_player/skelet"]
+position = Vector2(-2.17477, -2.5957)
+node_a = NodePath("../../pins/HipHolder/hip")
+node_b = NodePath("../../pins/ShinHolder/shin")
+
+[node name="shin_foot" type="PinJoint2D" parent="skelet_player/skelet"]
+position = Vector2(-8.5237, 14.3815)
+node_a = NodePath("../../pins/ShinHolder/shin")
+node_b = NodePath("../../pins/FootHolder/foot")

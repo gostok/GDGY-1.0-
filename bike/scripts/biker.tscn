@@ -1,14 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci8trx1sym8te"]
+[gd_scene load_steps=12 format=3 uid="uid://ci8trx1sym8te"]
 
 [ext_resource type="Script" path="res://bike/scripts/biker.gd" id="1_1r8vo"]
 [ext_resource type="Texture2D" uid="uid://bmixwl76p0dae" path="res://bike/sprites/Untitled_Artwork.png" id="1_oybmf"]
 [ext_resource type="PackedScene" uid="uid://cejs3tvu6jpp4" path="res://bike/scripts/bike_second/wheel/wheel.tscn" id="2_qy3pc"]
+[ext_resource type="PackedScene" uid="uid://bj252rp52a3qg" path="res://bike/scripts/bike_second/head/head.tscn" id="4_uwfmt"]
+[ext_resource type="PackedScene" uid="uid://dopyawhmurif1" path="res://bike/scripts/bike_second/body_player/body_player.tscn" id="5_ilmmr"]
+[ext_resource type="PackedScene" uid="uid://d32jafa2qkmfw" path="res://bike/scripts/bike_second/hand/hand.tscn" id="6_qvhpx"]
+[ext_resource type="PackedScene" uid="uid://yn3gtrf63o7" path="res://bike/scripts/bike_second/palm/palm.tscn" id="7_p7rn5"]
+[ext_resource type="PackedScene" uid="uid://cr331wn85tf5o" path="res://bike/scripts/bike_second/hip/hip.tscn" id="8_gi1b2"]
+[ext_resource type="PackedScene" uid="uid://bhxt4kceomvky" path="res://bike/scripts/bike_second/shin/shin.tscn" id="9_eonyv"]
+[ext_resource type="PackedScene" uid="uid://dx7dmeu4dhrqq" path="res://bike/scripts/bike_second/foot/foot.tscn" id="10_ysg34"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6d270"]
 atlas = ExtResource("1_oybmf")
 region = Rect2(18, 45, 80, 37)
 
 [node name="Biker" type="RigidBody2D"]
+mass = 4.0
 script = ExtResource("1_1r8vo")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -19,10 +27,122 @@ texture = SubResource("AtlasTexture_6d270")
 
 [node name="WheelHolder_Front" type="PinJoint2D" parent="."]
 position = Vector2(38, 17)
+node_a = NodePath("..")
+node_b = NodePath("wheel")
+softness = 1.5
 
 [node name="wheel" parent="WheelHolder_Front" instance=ExtResource("2_qy3pc")]
+mass = 0.3
 
 [node name="WheelHolder_Back" type="PinJoint2D" parent="."]
 position = Vector2(-25, 17)
+node_a = NodePath("..")
+node_b = NodePath("wheel")
+softness = 1.5
 
 [node name="wheel" parent="WheelHolder_Back" instance=ExtResource("2_qy3pc")]
+mass = 0.3
+
+[node name="player" type="Node2D" parent="."]
+
+[node name="skelet_player" type="Node2D" parent="player"]
+
+[node name="pins" type="Node2D" parent="player/skelet_player"]
+
+[node name="HeadHolder" type="PinJoint2D" parent="player/skelet_player/pins"]
+position = Vector2(7, -41)
+node_a = NodePath("../../../..")
+node_b = NodePath("head")
+softness = 1.5
+
+[node name="head" parent="player/skelet_player/pins/HeadHolder" instance=ExtResource("4_uwfmt")]
+
+[node name="Body_playerHolder" type="PinJoint2D" parent="player/skelet_player/pins"]
+position = Vector2(-9, -25)
+node_a = NodePath("../../../..")
+node_b = NodePath("body_player")
+softness = 1.5
+
+[node name="body_player" parent="player/skelet_player/pins/Body_playerHolder" instance=ExtResource("5_ilmmr")]
+
+[node name="--------------------------------" type="Node2D" parent="player/skelet_player/pins"]
+
+[node name="HandHolder" type="PinJoint2D" parent="player/skelet_player/pins"]
+position = Vector2(7, -25)
+node_a = NodePath("../../../..")
+node_b = NodePath("hand")
+softness = 1.5
+
+[node name="hand" parent="player/skelet_player/pins/HandHolder" instance=ExtResource("6_qvhpx")]
+
+[node name="PalmHolder" type="PinJoint2D" parent="player/skelet_player/pins"]
+position = Vector2(17, -18)
+node_a = NodePath("../../../..")
+node_b = NodePath("palm")
+softness = 1.5
+
+[node name="palm" parent="player/skelet_player/pins/PalmHolder" instance=ExtResource("7_p7rn5")]
+
+[node name="-------------------------------" type="Node2D" parent="player/skelet_player/pins"]
+
+[node name="HipHolder" type="PinJoint2D" parent="player/skelet_player/pins"]
+position = Vector2(-9, -9)
+node_a = NodePath("../../../..")
+node_b = NodePath("hip")
+softness = 1.5
+
+[node name="hip" parent="player/skelet_player/pins/HipHolder" instance=ExtResource("8_gi1b2")]
+
+[node name="ShinHolder" type="PinJoint2D" parent="player/skelet_player/pins"]
+position = Vector2(-0.993217, 6.16685)
+node_a = NodePath("../../../..")
+node_b = NodePath("shin")
+softness = 1.5
+
+[node name="shin" parent="player/skelet_player/pins/ShinHolder" instance=ExtResource("9_eonyv")]
+
+[node name="FootHolder" type="PinJoint2D" parent="player/skelet_player/pins"]
+position = Vector2(3.34275, 19.336)
+node_a = NodePath("../../../..")
+node_b = NodePath("foot")
+softness = 1.5
+
+[node name="foot" parent="player/skelet_player/pins/FootHolder" instance=ExtResource("10_ysg34")]
+
+[node name="skelet" type="Node2D" parent="player/skelet_player"]
+
+[node name="head_body" type="PinJoint2D" parent="player/skelet_player/skelet"]
+position = Vector2(-1.41113, -34.0101)
+node_a = NodePath("../../pins/HeadHolder/head")
+node_b = NodePath("../../pins/Body_playerHolder/body_player")
+softness = 1.5
+
+[node name="body_hand" type="PinJoint2D" parent="player/skelet_player/skelet"]
+position = Vector2(-0.891903, -30.2505)
+node_a = NodePath("../../pins/Body_playerHolder/body_player")
+node_b = NodePath("../../pins/HandHolder/hand")
+softness = 1.5
+
+[node name="hand_palm" type="PinJoint2D" parent="player/skelet_player/skelet"]
+position = Vector2(13.8245, -19.3246)
+node_a = NodePath("../../pins/HandHolder/hand")
+node_b = NodePath("../../pins/PalmHolder/palm")
+softness = 1.5
+
+[node name="body_hip" type="PinJoint2D" parent="player/skelet_player/skelet"]
+position = Vector2(-16.2757, -16.3459)
+node_a = NodePath("../../pins/Body_playerHolder/body_player")
+node_b = NodePath("../../pins/HipHolder/hip")
+softness = 1.5
+
+[node name="hip_shin" type="PinJoint2D" parent="player/skelet_player/skelet"]
+position = Vector2(0.995472, -2.92941)
+node_a = NodePath("../../pins/HipHolder/hip")
+node_b = NodePath("../../pins/ShinHolder/shin")
+softness = 1.5
+
+[node name="shin_foot" type="PinJoint2D" parent="player/skelet_player/skelet"]
+position = Vector2(-0.848376, 15.3826)
+node_a = NodePath("../../pins/ShinHolder/shin")
+node_b = NodePath("../../pins/FootHolder/foot")
+softness = 1.5
