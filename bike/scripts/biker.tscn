@@ -17,7 +17,7 @@ atlas = ExtResource("1_oybmf")
 region = Rect2(18, 45, 80, 37)
 
 [node name="Biker" type="RigidBody2D"]
-mass = 4.0
+mass = 3.0
 script = ExtResource("1_1r8vo")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

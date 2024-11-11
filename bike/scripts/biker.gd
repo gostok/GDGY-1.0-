@@ -4,12 +4,12 @@ extends RigidBody2D
 
 var wheels = []
 var deceleration = 250
-var speed = 0
+var speed = 100
 var max_speed = 20.0
-var tilt_angle = 110  # Угол наклона
-var tilt_return_speed = 0.8  # Скорость возвращения наклона в нейтральное положение
-var target_rotation = 0  # Целевое значение для наклонанаклона
-var velocity = Vector2.ZERO
+var tilt_angle = 2  # Угол наклона
+var tilt_return_speed = 5.0  # Скорость возвращения наклона в нейтральное положение
+var rotation_speed = 0  # Скорость наклона
+
 
 
 
@@ -18,49 +18,49 @@ var velocity = Vector2.ZERO
 
 
 func _ready() -> void:
-	wheels = [wheel_back]
 	add_child(movement)
 
 func _physics_process(delta: float) -> void:
 	gravity_scale = 1
-	velocity.y += gravity_scale * delta
+
 	
 	if Input.is_action_pressed("right"):
-		#tilt_right(delta)
+		tilt_right(delta)
 		movement.move_rigth(delta)
-		for wheel in wheels:
-			if wheel.angular_velocity < max_speed:
-				wheel.apply_torque_impulse(speed * delta * 30)
+		motor_force(speed)
 	elif Input.is_action_pressed("left"):
-		#tilt_left(delta)
+		tilt_left(delta)
 		movement.move_left(delta)
-		for wheel in wheels:
-			if wheel.angular_velocity < max_speed:
-				wheel.apply_torque_impulse(speed * delta * 30)
+		motor_force(speed)
 	else:
 		reset_tilt(delta)
+		motor_force(0)
 		
-		if linear_velocity.x != 0:
-			linear_velocity.x = move_toward(linear_velocity.x, 0, deceleration * delta)
+	rotation += rotation_speed * delta
 	
-	rotation = target_rotation
+	linear_velocity.x = move_toward(linear_velocity.x, max_speed * sign(rotation_speed), deceleration * delta)
 
+func motor_force(direction: float) -> void:
+	if wheel_back.angular_velocity < max_speed:
+		wheel_back.apply_torque_impulse(direction * 50)
 
 func tilt_left(delta: float) -> void:
 	# Наклон влево
-	target_rotation -= deg_to_rad(tilt_angle * delta * 0.5)  # Уменьшите множитель
+	rotation_speed = max(rotation_speed - tilt_angle * delta, -tilt_angle)
 
 
 func tilt_right(delta: float) -> void:
 	# Наклон вправо
-	target_rotation += deg_to_rad(tilt_angle * delta * 0.5)  # Уменьшите множитель
-
-
-
+	rotation_speed = min(rotation_speed + tilt_angle * delta, tilt_angle)
 
 func reset_tilt(delta: float) -> void:
 	# Возвращение в нейтральное положение
-	target_rotation = move_toward(target_rotation, 0, tilt_return_speed * delta)
+	if abs(rotation_speed) < 0.01:
+		rotation_speed = 0
+	else:
+		rotation_speed = move_toward(rotation_speed, 0, tilt_return_speed * delta)
+	# Ограничиваем угол наклона
+	rotation = clamp(rotation, -360, 360)
 
 func move_toward(current: float, target: float, delta: float) -> float:
 	if current > target:
