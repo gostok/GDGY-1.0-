@@ -1,70 +1,77 @@
 extends RigidBody2D
 
+enum State {
+	IDLE,
+	MOVING_LEFT,
+	MOVING_RIGHT
+}
+
+var current_state = State.IDLE
+
+var is_frozen = false
+var freeze_time = 0.1  # Время заморозки в секундах
+var freeze_timer = 0.0  # Таймер для отслеживания времени заморозки
+
 @onready var movement = preload("res://bike/scripts/playerMovement.gd").new()
-
-var wheels = []
-var deceleration = 250
-var speed = 100
-var max_speed = 20.0
-var tilt_angle = 2  # Угол наклона
-var tilt_return_speed = 5.0  # Скорость возвращения наклона в нейтральное положение
-var rotation_speed = 0  # Скорость наклона
-
-
-
-
 @onready var wheel_back = $WheelHolder_Back/wheel
 
+var wheels = []
+var deceleration = 200
+var speed = 2000
+var max_speed = 30
 
 
 func _ready() -> void:
 	add_child(movement)
 
 func _physics_process(delta: float) -> void:
-	gravity_scale = 1
-
-	
-	if Input.is_action_pressed("right"):
-		tilt_right(delta)
-		movement.move_rigth(delta)
-		motor_force(speed)
-	elif Input.is_action_pressed("left"):
-		tilt_left(delta)
-		movement.move_left(delta)
-		motor_force(speed)
+	if is_frozen:
+		freeze_timer -= delta
+		if freeze_timer <= 0:
+			is_frozen = false
+			current_state = State.IDLE
 	else:
-		reset_tilt(delta)
-		motor_force(0)
-		
-	rotation += rotation_speed * delta
-	
-	linear_velocity.x = move_toward(linear_velocity.x, max_speed * sign(rotation_speed), deceleration * delta)
+		handle_input(delta)
+		update_movement(delta)
 
-func motor_force(direction: float) -> void:
-	if wheel_back.angular_velocity < max_speed:
-		wheel_back.apply_torque_impulse(direction * 50)
-
-func tilt_left(delta: float) -> void:
-	# Наклон влево
-	rotation_speed = max(rotation_speed - tilt_angle * delta, -tilt_angle)
+	if Input.is_action_pressed("jump"):
+		if wheel_back.angular_velocity < max_speed:
+			wheel_back.apply_torque_impulse(speed * delta * 60)
 
 
-func tilt_right(delta: float) -> void:
-	# Наклон вправо
-	rotation_speed = min(rotation_speed + tilt_angle * delta, tilt_angle)
+func handle_input(delta: float):
+	if is_frozen:
+		return
 
-func reset_tilt(delta: float) -> void:
-	# Возвращение в нейтральное положение
-	if abs(rotation_speed) < 0.01:
-		rotation_speed = 0
+	var is_right_pressed = Input.is_action_pressed("right")
+	var is_left_pressed = Input.is_action_pressed("left")
+
+	if is_right_pressed and !is_left_pressed:
+		if current_state != State.MOVING_RIGHT:
+			current_state = State.MOVING_RIGHT
+
+	elif is_left_pressed and !is_right_pressed:
+		if current_state != State.MOVING_LEFT:
+			current_state = State.MOVING_LEFT
+
 	else:
-		rotation_speed = move_toward(rotation_speed, 0, tilt_return_speed * delta)
-	# Ограничиваем угол наклона
-	rotation = clamp(rotation, -360, 360)
+		current_state = State.IDLE
 
-func move_toward(current: float, target: float, delta: float) -> float:
-	if current > target:
-		return max(current - delta, target)
-	elif current < target:
-		return min(current + delta, target)
-	return target
+	if !is_left_pressed and !is_right_pressed:
+		freeze_state()
+
+
+func freeze_state():
+	is_frozen = true
+	freeze_timer = freeze_time
+
+func update_movement(delta: float):
+	match current_state:
+		State.IDLE:
+			pass
+		State.MOVING_RIGHT:
+			movement.move_rigth(delta)
+			apply_torque_impulse(600 * delta * 60)
+		State.MOVING_LEFT:
+			movement.move_left(delta)
+			apply_torque_impulse(-600 * delta * 60)

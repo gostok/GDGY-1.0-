@@ -30,19 +30,21 @@ texture = SubResource("AtlasTexture_6d270")
 position = Vector2(38, 17)
 node_a = NodePath("..")
 node_b = NodePath("wheel")
-softness = 1.5
+softness = 0.66
 
 [node name="wheel" parent="WheelHolder_Front" instance=ExtResource("2_qy3pc")]
-mass = 0.3
+mass = 3.0
+gravity_scale = 1.0
 
 [node name="WheelHolder_Back" type="PinJoint2D" parent="."]
 position = Vector2(-25, 17)
 node_a = NodePath("..")
 node_b = NodePath("wheel")
-softness = 1.5
+softness = 0.66
 
 [node name="wheel" parent="WheelHolder_Back" instance=ExtResource("2_qy3pc")]
-mass = 0.3
+mass = 3.0
+gravity_scale = 1.0
 
 [node name="player" type="Node2D" parent="."]
 
@@ -152,7 +154,7 @@ node_b = NodePath("../../pins/FootHolder/foot")
 softness = 0.4
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 rotation_smoothing_enabled = true
 
 [node name="script_move" type="Node2D" parent="."]
