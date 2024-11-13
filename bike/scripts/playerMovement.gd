@@ -15,12 +15,12 @@ var move_speed = 100
 
 
 func move_left(delta: float) -> void:
+
 	if offset_x > -max_offset_x:
 		offset_x -= move_speed * delta
 		offset_y += move_speed * delta
 		
 		head_player.position.x = offset_x
-		
 		head_player.rotation = deg_to_rad(-15)
 		
 		body_player.position.x = offset_x
@@ -39,7 +39,6 @@ func move_left(delta: float) -> void:
 		shin_player.rotation = deg_to_rad(-70)
 	else:
 		head_player.position.x = -7
-		
 		head_player.rotation = deg_to_rad(-15)
 		
 		body_player.position.x = -10
@@ -58,12 +57,13 @@ func move_left(delta: float) -> void:
 		shin_player.rotation = deg_to_rad(-70)
 
 func move_rigth(delta: float) -> void:
+
 	if offset_x < max_offset_x:
 		offset_x += move_speed * delta
 		offset_y += move_speed * delta
 		
 		head_player.position.x = offset_x
-		head_player.position.y = offset_y
+		head_player.position.y = 4
 		head_player.rotation = deg_to_rad(15)
 		
 		body_player.position.x = offset_x

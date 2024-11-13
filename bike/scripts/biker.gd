@@ -17,8 +17,8 @@ var freeze_timer = 0.0  # Таймер для отслеживания врем�
 
 var wheels = []
 var deceleration = 200
-var speed = 2000
-var max_speed = 30
+var speed = 1000
+var max_speed = 18
 
 
 func _ready() -> void:
@@ -71,7 +71,7 @@ func update_movement(delta: float):
 			pass
 		State.MOVING_RIGHT:
 			movement.move_rigth(delta)
-			apply_torque_impulse(600 * delta * 60)
+			apply_torque_impulse(200 * delta * 60)
 		State.MOVING_LEFT:
 			movement.move_left(delta)
-			apply_torque_impulse(-600 * delta * 60)
+			apply_torque_impulse(-200 * delta * 60)

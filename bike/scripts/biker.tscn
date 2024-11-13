@@ -53,7 +53,7 @@ gravity_scale = 1.0
 [node name="pins" type="Node2D" parent="player/skelet_player"]
 
 [node name="HeadHolder" type="PinJoint2D" parent="player/skelet_player/pins"]
-position = Vector2(6.50394, -37.8252)
+position = Vector2(8.28318, -39.4171)
 node_a = NodePath("../../../..")
 node_b = NodePath("head")
 softness = 0.4
@@ -115,9 +115,9 @@ softness = 0.4
 [node name="foot" parent="player/skelet_player/pins/FootHolder" instance=ExtResource("10_ysg34")]
 
 [node name="skelet" type="Node2D" parent="player/skelet_player"]
-visible = false
 
 [node name="head_body" type="PinJoint2D" parent="player/skelet_player/skelet"]
+visible = false
 position = Vector2(1.26037, -31.9216)
 node_a = NodePath("../../pins/HeadHolder/head")
 node_b = NodePath("../../pins/Body_playerHolder/body_player")

@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="GDGY (1.0)"
-run/main_scene="res://all_scenes/test_scene/test_scene.tscn"
+run/main_scene="res://all_scenes/levels/level_1/level_1_0.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://ico.png"
 
 [display]
 
@@ -52,10 +52,11 @@ jump={
 
 [physics]
 
-2d/default_gravity=162.0
+2d/default_gravity=80.0
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.304813, 0.123927, 0.313606, 1)
