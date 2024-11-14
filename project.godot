@@ -31,6 +31,7 @@ enabled=PackedStringArray("res://addons/rmsmartshape/plugin.cfg")
 
 player=""
 wheel=""
+ground=""
 
 [input]
 
@@ -50,9 +51,14 @@ jump={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_2="area"
+2d_physics/layer_3="floor"
+
 [physics]
 
-2d/default_gravity=80.0
+2d/default_gravity=60.0
 
 [rendering]
 

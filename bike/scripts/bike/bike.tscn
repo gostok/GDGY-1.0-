@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bais5oi5dt6vg"]
 
 [ext_resource type="Texture2D" uid="uid://bmixwl76p0dae" path="res://bike/sprites/Untitled_Artwork.png" id="1_uvcja"]
-[ext_resource type="PackedScene" uid="uid://cejs3tvu6jpp4" path="res://bike/scripts/bike_second/wheel/wheel.tscn" id="2_txy2f"]
+[ext_resource type="PackedScene" uid="uid://cejs3tvu6jpp4" path="res://bike/scripts/bike_second/wheel/wheel_front.tscn" id="2_txy2f"]
 [ext_resource type="PackedScene" uid="uid://bj252rp52a3qg" path="res://bike/scripts/bike_second/head/head.tscn" id="3_008fu"]
 [ext_resource type="PackedScene" uid="uid://dopyawhmurif1" path="res://bike/scripts/bike_second/body_player/body_player.tscn" id="4_dllqi"]
 [ext_resource type="PackedScene" uid="uid://d32jafa2qkmfw" path="res://bike/scripts/bike_second/hand/hand.tscn" id="5_mxjcs"]

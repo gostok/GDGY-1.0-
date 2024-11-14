@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0qt8cotsii4b"]
+
+[ext_resource type="Texture2D" uid="uid://bmixwl76p0dae" path="res://bike/sprites/Untitled_Artwork.png" id="1_0lnr7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01y0y"]
+atlas = ExtResource("1_0lnr7")
+region = Rect2(200, 105, 33, 33)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ifrob"]
+radius = 16.5
+
+[node name="wheel_back" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = SubResource("AtlasTexture_01y0y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.2, 0.2)
+shape = SubResource("CircleShape2D_ifrob")

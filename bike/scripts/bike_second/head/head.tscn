@@ -13,7 +13,9 @@ radius = 8.65762
 [node name="head" type="RigidBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
 texture = SubResource("AtlasTexture_srtbs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.2, 0.2)
 shape = SubResource("CircleShape2D_xjmvi")

@@ -13,8 +13,11 @@ height = 20.1641
 [node name="shin" type="RigidBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -0.349066
+scale = Vector2(0.2, 0.2)
 texture = SubResource("AtlasTexture_ah0c4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 0.724048
+rotation = 0.359538
+scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_rrb0t")

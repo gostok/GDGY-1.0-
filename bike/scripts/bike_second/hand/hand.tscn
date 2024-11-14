@@ -14,8 +14,10 @@ height = 16.2225
 [node name="hand" type="RigidBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
 texture = SubResource("AtlasTexture_u1sgh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -0.804388
+scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_6uirx")
