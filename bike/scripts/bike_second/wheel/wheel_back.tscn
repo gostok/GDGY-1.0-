@@ -10,6 +10,7 @@ region = Rect2(200, 105, 33, 33)
 radius = 16.5
 
 [node name="wheel_back" type="RigidBody2D"]
+collision_layer = 9
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)

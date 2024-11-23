@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ci8trx1sym8te"]
+[gd_scene load_steps=18 format=3 uid="uid://ci8trx1sym8te"]
 
 [ext_resource type="Script" path="res://bike/scripts/biker.gd" id="1_1r8vo"]
 [ext_resource type="Texture2D" uid="uid://chh0jcflwekeo" path="res://bike/sprites/bike.png" id="2_70oqy"]
@@ -17,19 +17,22 @@
 atlas = ExtResource("2_70oqy")
 region = Rect2(46, 29, 79, 32)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ypa3v"]
+radius = 3.38777
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_x15xw"]
-radius = 8.99339
+radius = 9.66814
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_84qjm"]
-radius = 4.40316
-height = 19.0623
+radius = 5.04127
+height = 20.7827
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0gdpe"]
-radius = 3.06533
-height = 16.4393
+radius = 3.75214
+height = 17.9942
 
 [node name="Biker" type="RigidBody2D"]
-mass = 3.0
+mass = 12.0
 script = ExtResource("1_1r8vo")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -50,7 +53,7 @@ node_b = NodePath("wheel_front")
 softness = 0.66
 
 [node name="wheel_front" parent="wheels/WheelHolder_Front" instance=ExtResource("2_qy3pc")]
-mass = 0.1
+mass = 3.0
 gravity_scale = 1.0
 
 [node name="WheelHolder_Back" type="PinJoint2D" parent="wheels"]
@@ -60,6 +63,12 @@ node_b = NodePath("wheel_back")
 softness = 0.66
 
 [node name="wheel_back" parent="wheels/WheelHolder_Back" instance=ExtResource("4_rfdan")]
+mass = 3.0
+
+[node name="Area2D_back" type="Area2D" parent="wheels/WheelHolder_Back/wheel_back"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wheels/WheelHolder_Back/wheel_back/Area2D_back"]
+shape = SubResource("CircleShape2D_ypa3v")
 
 [node name="player" type="Node2D" parent="."]
 
@@ -78,11 +87,13 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player/skelet_player/pins/HeadHolder/head_death"]
+position = Vector2(-0.130069, 0)
 scale = Vector2(0.2, 0.2)
 shape = SubResource("CircleShape2D_x15xw")
 debug_color = Color(0.966631, 0.173992, 0.148345, 0.42)
 
 [node name="head" parent="player/skelet_player/pins/HeadHolder" instance=ExtResource("4_uwfmt")]
+mass = 3.0
 
 [node name="Body_playerHolder" type="PinJoint2D" parent="player/skelet_player/pins"]
 position = Vector2(-1.28652, -4.48353)
@@ -99,6 +110,7 @@ shape = SubResource("CapsuleShape2D_84qjm")
 debug_color = Color(0.999945, 0, 0.0953122, 0.42)
 
 [node name="body_b" parent="player/skelet_player/pins/Body_playerHolder" instance=ExtResource("5_ilmmr")]
+mass = 3.0
 
 [node name="----------------------" type="Node2D" parent="player/skelet_player/pins"]
 
@@ -117,6 +129,7 @@ shape = SubResource("CapsuleShape2D_0gdpe")
 debug_color = Color(0.999727, 0, 0.103323, 0.42)
 
 [node name="hand" parent="player/skelet_player/pins/HandHolder" instance=ExtResource("6_qvhpx")]
+mass = 3.0
 
 [node name="PalmHolder" type="PinJoint2D" parent="player/skelet_player/pins"]
 position = Vector2(3.2959, -2.8062)
@@ -125,6 +138,7 @@ node_b = NodePath("palm")
 softness = 0.4
 
 [node name="palm" parent="player/skelet_player/pins/PalmHolder" instance=ExtResource("7_p7rn5")]
+mass = 3.0
 
 [node name="---------------------" type="Node2D" parent="player/skelet_player/pins"]
 
@@ -135,6 +149,7 @@ node_b = NodePath("shin")
 softness = 0.4
 
 [node name="shin" parent="player/skelet_player/pins/ShinHolder" instance=ExtResource("9_eonyv")]
+mass = 3.0
 
 [node name="HipHolder" type="PinJoint2D" parent="player/skelet_player/pins"]
 position = Vector2(-1.28812, -1.59983)
@@ -143,6 +158,7 @@ node_b = NodePath("hip")
 softness = 0.4
 
 [node name="hip" parent="player/skelet_player/pins/HipHolder" instance=ExtResource("8_gi1b2")]
+mass = 3.0
 
 [node name="FootHolder" type="PinJoint2D" parent="player/skelet_player/pins"]
 position = Vector2(0.800405, 3.60368)
@@ -151,6 +167,7 @@ node_b = NodePath("foot")
 softness = 0.4
 
 [node name="foot" parent="player/skelet_player/pins/FootHolder" instance=ExtResource("10_ysg34")]
+mass = 3.0
 
 [node name="skelet" type="Node2D" parent="player/skelet_player"]
 scale = Vector2(0.05, 0.05)
@@ -193,15 +210,13 @@ softness = 0.4
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
-limit_left = 0
-limit_top = 0
-limit_right = 800
-limit_bottom = 600
 rotation_smoothing_enabled = true
 
 [node name="script_move" type="Node2D" parent="."]
 script = ExtResource("11_yjsg1")
 
+[connection signal="body_entered" from="wheels/WheelHolder_Back/wheel_back/Area2D_back" to="." method="_on_area_2d_back_body_entered"]
+[connection signal="body_exited" from="wheels/WheelHolder_Back/wheel_back/Area2D_back" to="." method="_on_area_2d_back_body_exited"]
 [connection signal="body_entered" from="player/skelet_player/pins/HeadHolder/head_death" to="." method="_on_head_death_body_entered"]
 [connection signal="body_entered" from="player/skelet_player/pins/Body_playerHolder/body_death" to="." method="_on_body_death_body_entered"]
 [connection signal="body_entered" from="player/skelet_player/pins/HandHolder/hand_death" to="." method="_on_hand_death_body_entered"]

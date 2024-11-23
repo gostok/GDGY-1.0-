@@ -1,19 +1,103 @@
-[gd_scene load_steps=2 format=3 uid="uid://duyjqxp4t2gpt"]
+[gd_scene load_steps=10 format=3 uid="uid://duyjqxp4t2gpt"]
 
 [ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="1_sxux5"]
+[ext_resource type="Script" path="res://all_scenes/test_scene/test_scene.gd" id="1_xh2or"]
+[ext_resource type="Script" path="res://all_scenes/bg/parallax_background.gd" id="2_h7k7c"]
+[ext_resource type="Texture2D" uid="uid://dp2lmqcjwxwe" path="res://assets/city/-6.png" id="3_nsmd8"]
+[ext_resource type="Texture2D" uid="uid://bwixbaxx5wwwb" path="res://assets/city/-5.png" id="4_tcay0"]
+[ext_resource type="Texture2D" uid="uid://hwyyac0ueg0r" path="res://assets/city/-4.png" id="5_pyuto"]
+[ext_resource type="Texture2D" uid="uid://rnu2eqlbw80b" path="res://assets/city/-3.png" id="6_bkdc5"]
+[ext_resource type="Texture2D" uid="uid://b77prcpta4qrr" path="res://assets/city/-2.png" id="7_38y1i"]
+[ext_resource type="Texture2D" uid="uid://cxw4an1wiy2se" path="res://assets/city/-1.png" id="8_ve68r"]
 
 [node name="Test_scene" type="Node2D"]
+script = ExtResource("1_xh2or")
 
-[node name="Tiles" type="Node2D" parent="."]
+[node name="bg_p" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tiles"]
-collision_mask = 2
+[node name="ParallaxBackground" type="ParallaxBackground" parent="bg_p"]
+script = ExtResource("2_h7k7c")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tiles/StaticBody2D"]
-polygon = PackedVector2Array(10.5429, 117.492, 19.7353, 270.227, 399.452, 268.106, 619.362, 224.972, 621.483, 358.615, 794.017, 360.03, 670.274, 421.548, 31.7561, 393.971, 4.88608, 202.345)
+[node name="ParallaxLayer" type="ParallaxLayer" parent="bg_p/ParallaxBackground"]
+motion_scale = Vector2(0.16, 1)
+motion_mirroring = Vector2(608, 0)
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Tiles/StaticBody2D"]
-polygon = PackedVector2Array(618.445, 224.731, 930.49, 228.099, 1567.7, 356.488, 2678.82, 682.33, 3259.15, 556.274, 4433.69, 558.653, 5237.6, 698.979, 5649.06, 599.086, 5901.17, 613.356, 6024.85, 591.951, 6020.1, 87.7268, 6070.04, 454.003, 6034.37, 806.008, 3132.7, 863.09, 812.558, 729.899)
+[node name="-6" type="Sprite2D" parent="bg_p/ParallaxBackground/ParallaxLayer"]
+modulate = Color(1, 1, 1, 0.772549)
+texture_filter = 1
+position = Vector2(368, 448)
+scale = Vector2(1.01333, 1)
+texture = ExtResource("3_nsmd8")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="bg_p/ParallaxBackground"]
+motion_scale = Vector2(0.32, 1)
+motion_mirroring = Vector2(608, 0)
+
+[node name="-5" type="Sprite2D" parent="bg_p/ParallaxBackground/ParallaxLayer2"]
+modulate = Color(1, 1, 1, 0.772549)
+texture_filter = 1
+position = Vector2(368, 448)
+scale = Vector2(1.01333, 1)
+texture = ExtResource("4_tcay0")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="bg_p/ParallaxBackground"]
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(608, 0)
+
+[node name="-4" type="Sprite2D" parent="bg_p/ParallaxBackground/ParallaxLayer3"]
+modulate = Color(1, 1, 1, 0.772549)
+texture_filter = 1
+position = Vector2(368, 448)
+scale = Vector2(1.01333, 1)
+texture = ExtResource("5_pyuto")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="bg_p/ParallaxBackground"]
+motion_scale = Vector2(0.66, 1)
+motion_mirroring = Vector2(608, 0)
+
+[node name="-3" type="Sprite2D" parent="bg_p/ParallaxBackground/ParallaxLayer4"]
+modulate = Color(1, 1, 1, 0.772549)
+texture_filter = 1
+position = Vector2(368, 448)
+scale = Vector2(1.01333, 1)
+texture = ExtResource("6_bkdc5")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="bg_p/ParallaxBackground"]
+motion_scale = Vector2(0.83, 1)
+motion_mirroring = Vector2(608, 0)
+
+[node name="-2" type="Sprite2D" parent="bg_p/ParallaxBackground/ParallaxLayer5"]
+modulate = Color(1, 1, 1, 0.772549)
+texture_filter = 1
+position = Vector2(368, 448)
+scale = Vector2(1.01333, 1)
+texture = ExtResource("7_38y1i")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="bg_p/ParallaxBackground"]
+motion_mirroring = Vector2(608, 0)
+
+[node name="-1" type="Sprite2D" parent="bg_p/ParallaxBackground/ParallaxLayer6"]
+modulate = Color(1, 1, 1, 0.772549)
+texture_filter = 1
+position = Vector2(368, 448)
+scale = Vector2(1.01333, 1)
+texture = ExtResource("8_ve68r")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 9
+
+[node name="Line2D" type="Line2D" parent="StaticBody2D"]
+points = PackedVector2Array(-0.0418854, 363.827, 8.38609, 362.516, 14.5666, 362.328, 31.2353, 360.456, 76.9336, 375.439, 92.8531, 397.164, 94.4981, 431.529, 97.6162, 466.052, 120.139, 507.157, 156.37, 508.781, 193.79, 508.992, 219.648, 502.265, 248.659, 496.799, 249.523, 530.9, 250.637, 558.072, 264, 576, 264, 592, 272, 608, 280, 584, 289.304, 571.226, 289.919, 548.843, 290.832, 529.41, 291.533, 514.748, 292.164, 509.907, 293.562, 501.5, 302.277, 502.43, 311.312, 498.375, 317.187, 492, 321.312, 487.75, 331.015, 482.301, 336.709, 474.355, 339.755, 469.19, 344, 456, 356.093, 455.473, 368.277, 451.632, 380.726, 436.535, 387.745, 428.324, 401.253, 427.529, 401.253, 449.248, 401.465, 506.657, 402.133, 575.033, 408, 608, 416, 552, 424, 600, 432, 624, 432, 560, 432, 512, 432, 480, 432, 464, 432, 448, 472, 432, 492.338, 424.541, 508.495, 431.824, 523.724, 439.108, 537.365, 445.332, 552.727, 452.351, 559.481, 454.205, 568.487, 457.649, 588.696, 464.8, 602.204, 469.7, 613.858, 473.673, 626.175, 478.043, 635.048, 481.354, 645.642, 480.692, 659.15, 479.368, 672.27, 478.043, 685.91, 476.852, 696.372, 475.13, 701.14, 471.157, 710.278, 461.622, 718.224, 453.146, 727.362, 444.141, 732.129, 439.241, 739.729, 425.561, 747.166, 411.811, 754.742, 399.323, 758.25, 393.01, 763.722, 395.535, 769.054, 398.622, 777.332, 403.252, 777.472, 418.967, 778.314, 446.747, 779.034, 460.149, 783.039, 468.492, 786.71, 477.836, 788.879, 482.174, 798.39, 482.174, 809.068, 481.84, 826.421, 482.341, 829.377, 480.172, 833.215, 476.668, 838.554, 472.663, 844.06, 467.991, 848.899, 464.821, 853.571, 457.646, 859.077, 444.631, 864.584, 433.118, 870.09, 422.106, 875.93, 437.123, 881.603, 450.972, 884.273, 457.813, 891.058, 463.319, 902.905, 473.831, 909.579, 479.337, 925.597, 479.17, 934.607, 480.005, 944.452, 480.338, 957.967, 480.005, 965.518, 480.672, 975.363, 480.672, 988.044, 474.498, 999.557, 469.66, 1010.24, 465.321, 1022.08, 459.482, 1035.26, 450.805, 1044.94, 444.465, 1059.12, 438.124, 1071.47, 432.117, 1083.42, 426.444, 1094.43, 434.286, 1102.78, 442.796, 1107.45, 448.469, 1112.62, 455.31, 1115.46, 459.148, 1121.96, 458.814, 1134.98, 458.647, 1146.99, 457.813, 1160.01, 457.312, 1167.35, 455.978, 1174.08, 451.472, 1182.42, 445.466, 1189.6, 441.294, 1198.94, 434.286, 1209.79, 426.778, 1225.14, 425.777, 1234.65, 424.776, 1244.66, 424.442, 1254.7, 423.775, 1256.47, 412.638, 1258.24, 400.794, 1264.25, 391.248, 1266.54, 382.763, 1268.84, 369.858, 1272.02, 364.378, 1274.85, 361.196, 1279.1, 359.958, 1281.92, 360.665)
+width = 1.0
+default_color = Color(0.719097, 0.0187461, 0.595261, 1)
+
+[node name="collision" type="CollisionPolygon2D" parent="StaticBody2D"]
+
+[node name="UpperLine2D" type="Line2D" parent="."]
+width = 1.0
+default_color = Color(0.717647, 0.0196078, 0.596078, 1)
 
 [node name="Biker" parent="." instance=ExtResource("1_sxux5")]
-position = Vector2(92.0252, 234.585)
+position = Vector2(144.653, 481.431)
+collision_layer = 8
