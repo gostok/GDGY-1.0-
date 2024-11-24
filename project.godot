@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GDGY (1.0)"
-run/main_scene="res://all_scenes/test_scene/test_scene.tscn"
+run/main_scene="res://all_scenes/menu_scenes/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://ico.svg"
 config/windows_native_icon="res://ico.ico"

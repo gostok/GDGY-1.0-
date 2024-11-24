@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk3vpr6inn2lv"]
+
+[ext_resource type="Script" path="res://all_scenes/menu_scenes/play_menu/level_menu/level_menu.gd" id="1_4nift"]
+
+[node name="Level_menu" type="CanvasLayer"]
+script = ExtResource("1_4nift")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="Light_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Light"
+
+[node name="Medium_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Medium"
+
+[node name="Heavy_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Heavy"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Light_bt" to="." method="_on_light_bt_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Medium_bt" to="." method="_on_medium_bt_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Heavy_bt" to="." method="_on_heavy_bt_pressed"]

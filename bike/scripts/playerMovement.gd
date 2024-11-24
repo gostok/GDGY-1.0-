@@ -91,5 +91,5 @@ func move_rigth(delta: float) -> void:
 		hip_player.position.x = 0.6
 		hip_player.rotation = deg_to_rad(40)
 		
-		shin_player.position.x = -0.5
+		shin_player.position.x = -0.2
 		shin_player.rotation = deg_to_rad(-15)

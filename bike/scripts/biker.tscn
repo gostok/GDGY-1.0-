@@ -50,7 +50,7 @@ texture = SubResource("AtlasTexture_6d270")
 position = Vector2(7.99783, 3.49826)
 node_a = NodePath("../..")
 node_b = NodePath("wheel_front")
-softness = 0.66
+softness = 0.33
 
 [node name="wheel_front" parent="wheels/WheelHolder_Front" instance=ExtResource("2_qy3pc")]
 mass = 3.0
@@ -60,7 +60,7 @@ gravity_scale = 1.0
 position = Vector2(-4.606, 3.498)
 node_a = NodePath("../..")
 node_b = NodePath("wheel_back")
-softness = 0.66
+softness = 0.33
 
 [node name="wheel_back" parent="wheels/WheelHolder_Back" instance=ExtResource("4_rfdan")]
 mass = 3.0
@@ -71,6 +71,7 @@ mass = 3.0
 shape = SubResource("CircleShape2D_ypa3v")
 
 [node name="player" type="Node2D" parent="."]
+position = Vector2(0.707806, 0.457139)
 
 [node name="skelet_player" type="Node2D" parent="player"]
 
@@ -149,6 +150,8 @@ node_b = NodePath("shin")
 softness = 0.4
 
 [node name="shin" parent="player/skelet_player/pins/ShinHolder" instance=ExtResource("9_eonyv")]
+collision_layer = 32
+collision_mask = 0
 mass = 3.0
 
 [node name="HipHolder" type="PinJoint2D" parent="player/skelet_player/pins"]
@@ -158,6 +161,8 @@ node_b = NodePath("hip")
 softness = 0.4
 
 [node name="hip" parent="player/skelet_player/pins/HipHolder" instance=ExtResource("8_gi1b2")]
+collision_layer = 32
+collision_mask = 0
 mass = 3.0
 
 [node name="FootHolder" type="PinJoint2D" parent="player/skelet_player/pins"]
@@ -167,6 +172,8 @@ node_b = NodePath("foot")
 softness = 0.4
 
 [node name="foot" parent="player/skelet_player/pins/FootHolder" instance=ExtResource("10_ysg34")]
+collision_layer = 32
+collision_mask = 0
 mass = 3.0
 
 [node name="skelet" type="Node2D" parent="player/skelet_player"]

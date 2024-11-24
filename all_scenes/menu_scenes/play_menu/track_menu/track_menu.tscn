@@ -1,0 +1,100 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmy7ncxw3us7"]
+
+[ext_resource type="Script" path="res://all_scenes/menu_scenes/play_menu/track_menu/track_menu.gd" id="1_b6gl5"]
+
+[node name="Track_menu" type="CanvasLayer"]
+script = ExtResource("1_b6gl5")
+
+[node name="mc_light" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mc_light"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="Test_Track" type="Button" parent="mc_light/VBoxContainer"]
+layout_mode = 2
+text = "Test_Track"
+
+[node name="Test_2_Track" type="Button" parent="mc_light/VBoxContainer"]
+layout_mode = 2
+text = "Test_2_Track"
+
+[node name="Test_3_Track" type="Button" parent="mc_light/VBoxContainer"]
+layout_mode = 2
+text = "Test_3_Track"
+
+[node name="mc_medium" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mc_medium"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="Start_bt" type="Button" parent="mc_medium/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Track_bt" type="Button" parent="mc_medium/VBoxContainer"]
+layout_mode = 2
+text = "Track"
+
+[node name="Records_bt" type="Button" parent="mc_medium/VBoxContainer"]
+layout_mode = 2
+text = "Records"
+
+[node name="mc_heavy" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mc_heavy"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="Start_bt" type="Button" parent="mc_heavy/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Track_bt" type="Button" parent="mc_heavy/VBoxContainer"]
+layout_mode = 2
+text = "Track"
+
+[node name="Records_bt" type="Button" parent="mc_heavy/VBoxContainer"]
+layout_mode = 2
+text = "Records"
+
+[connection signal="pressed" from="mc_light/VBoxContainer/Test_Track" to="." method="_on_test_track_pressed"]
