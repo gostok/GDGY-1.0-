@@ -1,4 +1,0 @@
-[gd_scene format=3 uid="uid://coxh541ypq2yy"]
-
-[node name="bg_p" type="Node2D"]
-scale = Vector2(0.5, 0.5)

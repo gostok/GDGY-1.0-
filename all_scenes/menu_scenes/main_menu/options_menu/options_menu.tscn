@@ -36,7 +36,7 @@ layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "   A - run                     <- - tilt to the left
    D - stop                   -> - tilt to the right 
-	"
+   P - reset level"
 
 [node name="back_bt" type="Button" parent="MarginContainer/VBoxContainer"]
 self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)

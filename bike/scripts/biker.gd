@@ -101,15 +101,15 @@ func _change_scene():
 
 func _on_head_death_body_entered(body) -> void:
 	if body is StaticBody2D:
-		current_state = State.DEATH
+		death_player()
 
 func _on_body_death_body_entered(body) -> void:
 	if body is StaticBody2D:
-		current_state = State.DEATH
+		death_player()
 
 func _on_hand_death_body_entered(body) -> void:
 	if body is StaticBody2D:
-		current_state = State.DEATH
+		death_player()
 
 func _on_area_2d_back_body_entered(body: Node2D) -> void:
 	if body is StaticBody2D:

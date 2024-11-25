@@ -85,7 +85,6 @@ softness = 0.4
 
 [node name="head_death" type="Area2D" parent="player/skelet_player/pins/HeadHolder"]
 collision_layer = 2
-collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player/skelet_player/pins/HeadHolder/head_death"]
 position = Vector2(-0.130069, 0)
@@ -103,6 +102,7 @@ node_b = NodePath("body_b")
 softness = 0.4
 
 [node name="body_death" type="Area2D" parent="player/skelet_player/pins/Body_playerHolder"]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player/skelet_player/pins/Body_playerHolder/body_death"]
 rotation = 0.656244
@@ -122,6 +122,7 @@ node_b = NodePath("hand")
 softness = 0.4
 
 [node name="hand_death" type="Area2D" parent="player/skelet_player/pins/HandHolder"]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player/skelet_player/pins/HandHolder/hand_death"]
 rotation = -0.804597
@@ -216,7 +217,7 @@ node_b = NodePath("../../pins/ShinHolder/shin")
 softness = 0.4
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
+zoom = Vector2(4, 4)
 rotation_smoothing_enabled = true
 
 [node name="script_move" type="Node2D" parent="."]

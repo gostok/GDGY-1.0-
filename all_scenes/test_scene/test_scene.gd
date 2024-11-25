@@ -5,7 +5,7 @@ extends Node2D
 @onready var collisionP = $StaticBody2D/collision
 @onready var statbod = $StaticBody2D
 
-var offset = 10.0  # Смещение для создания верхней линии
+var offset = 12.0  # Смещение для создания верхней линии
 var collision_offset = 2.5  # Смещение для коллизии
 var ground_y = 720  # Y-координата для нижней части коллизии
 var right_x = 1280  # X-координата для правой части коллизии
