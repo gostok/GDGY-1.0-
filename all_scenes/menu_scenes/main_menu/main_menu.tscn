@@ -25,25 +25,32 @@ theme_override_constants/separation = 35
 alignment = 1
 
 [node name="Play_menu_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
+texture_filter = 1
 layout_mode = 2
 text = "Play Menu"
 icon_alignment = 1
 
 [node name="Options_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
 text = "Options"
 
 [node name="Help_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
 text = "Help"
 
 [node name="About_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
 text = "About"
 
 [node name="Exit_game_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
 text = "Exit Game"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play_menu_bt" to="." method="_on_play_menu_bt_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options_bt" to="." method="_on_options_bt_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Exit_game_bt" to="." method="_on_exit_game_bt_pressed"]

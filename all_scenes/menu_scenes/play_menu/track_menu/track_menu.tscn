@@ -24,16 +24,19 @@ layout_mode = 2
 theme_override_constants/separation = 35
 
 [node name="Test_Track" type="Button" parent="mc_light/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
 text = "Test_Track"
 
 [node name="Test_2_Track" type="Button" parent="mc_light/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
-text = "Test_2_Track"
+text = "None"
 
 [node name="Test_3_Track" type="Button" parent="mc_light/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
-text = "Test_3_Track"
+text = "None"
 
 [node name="mc_medium" type="MarginContainer" parent="."]
 visible = false
@@ -54,17 +57,15 @@ custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 theme_override_constants/separation = 35
 
-[node name="Start_bt" type="Button" parent="mc_medium/VBoxContainer"]
+[node name="Track1" type="Button" parent="mc_medium/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
-text = "Start"
+text = "None"
 
-[node name="Track_bt" type="Button" parent="mc_medium/VBoxContainer"]
+[node name="Track2" type="Button" parent="mc_medium/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
-text = "Track"
-
-[node name="Records_bt" type="Button" parent="mc_medium/VBoxContainer"]
-layout_mode = 2
-text = "Records"
+text = "None"
 
 [node name="mc_heavy" type="MarginContainer" parent="."]
 visible = false
@@ -85,16 +86,14 @@ custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 theme_override_constants/separation = 35
 
-[node name="Start_bt" type="Button" parent="mc_heavy/VBoxContainer"]
+[node name="Track1" type="Button" parent="mc_heavy/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
-text = "Start"
+text = "None"
 
-[node name="Track_bt" type="Button" parent="mc_heavy/VBoxContainer"]
+[node name="Track2" type="Button" parent="mc_heavy/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
-text = "Track"
-
-[node name="Records_bt" type="Button" parent="mc_heavy/VBoxContainer"]
-layout_mode = 2
-text = "Records"
+text = "None"
 
 [connection signal="pressed" from="mc_light/VBoxContainer/Test_Track" to="." method="_on_test_track_pressed"]

@@ -24,22 +24,27 @@ layout_mode = 2
 theme_override_constants/separation = 35
 
 [node name="Start_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
 text = "Start"
 
 [node name="Level_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
 text = "Level"
 
 [node name="Track_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
 text = "Track"
 
 [node name="Records_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
 text = "Records"
 
 [node name="Back_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
 text = "Back"
 
