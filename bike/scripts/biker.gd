@@ -15,6 +15,7 @@ var current_state = State.IDLE
 @onready var movement = preload("res://bike/scripts/playerMovement.gd").new()
 @onready var wheel_back = $wheels/WheelHolder_Back/wheel_back
 @onready var wheel_area_back = $wheels/WheelHolder_Back/wheel_back/Area2D_back
+@onready var bike_c = $bike_body
 
 
 var wheels = []
@@ -38,16 +39,21 @@ func _physics_process(delta: float) -> void:
 		if wheel_back.angular_velocity < max_speed:
 			wheel_back.apply_torque_impulse(speed * delta * 60)
 	if Input.is_action_just_pressed("run") or is_on_ground_back==false:
-		wheel_back.angular_velocity = max(0, current_speed - deceleration * delta * 60)
+		wheel_back.angular_velocity = max(0, wheel_back.angular_velocity - deceleration * delta * 60)
 	if Input.is_action_pressed("stop"):
-		wheel_back.angular_velocity = 0
+		if is_on_ground_back:
+			wheel_back.angular_velocity = 0
+			self.linear_velocity = Vector2.ZERO
+
+
+
+
 
 	if Input.is_action_pressed("reset"):
 		get_tree().change_scene_to_file("res://all_scenes/test_scene/test_scene.tscn")
 
+
 func handle_input(delta: float):
-
-
 	var is_right_pressed = Input.is_action_pressed("right")
 	var is_left_pressed = Input.is_action_pressed("left")
 
@@ -82,7 +88,7 @@ func update_movement(delta: float):
 			death_player()
 
 	# Применяем крутящий момент
-	apply_torque_impulse(torque * delta * 30)
+	apply_torque_impulse(torque * delta * 60)
 
 	# Применяем силу для движения
 	apply_impulse(Vector2(0, 0), Vector2(acceleration * delta, 0))
@@ -97,7 +103,15 @@ func death_player():
 	call_deferred("_change_scene")
 
 func _change_scene():
-	get_tree().change_scene_to_file("res://all_scenes/test_scene/test_scene.tscn")
+	# Получаем текущую сцену
+	var current_scene = get_tree().get_current_scene()
+	
+	# Получаем путь к текущей сцене
+	var current_scene_path = current_scene.get_scene_file_path()
+	
+	# Перезагружаем текущую сцену
+	get_tree().change_scene_to_file(current_scene_path)
+
 
 func _on_head_death_body_entered(body) -> void:
 	if body is StaticBody2D:

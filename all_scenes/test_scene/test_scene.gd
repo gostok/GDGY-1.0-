@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name BaseScenes_line
+
 @onready var line2d = $StaticBody2D/Line2D  # Ваш узел Line2D
 @onready var upper_line2d = $UpperLine2D  # Новый узел Line2D для верхней трассы
 @onready var collisionP = $StaticBody2D/collision
@@ -22,7 +24,7 @@ func _draw():
 	# Проверяем, есть ли точки в обеих линиях
 	if lower_points.size() > 0 and upper_points.size() > 0:
 		# Закрашиваем пространство между линиями
-		var fill_color = Color(229 / 255.0, 21 / 255.0, 191 / 255.0, 1.0)  # Альфа-канал 
+		var fill_color = Color(229 / 255.0, 21 / 255.0, 191 / 255.0, 0.2)  # Альфа-канал 
 		var polygon_points = get_polygon_between_lines(lower_points, upper_points)
 		draw_polygon(polygon_points, [fill_color])  # Передаем массив точек и массив цветов
 		draw_connecting_lines(lower_points, upper_points)  # Рисуем соединительные линии
@@ -76,5 +78,5 @@ func draw_connecting_lines(lower_points: Array, upper_points: Array):
 		if i < upper_points.size():  # Проверка на соответствие размеров
 			var lower_point = lower_points[i]
 			var upper_point = upper_points[i]
-			var color_con_lines = Color(183/255.0, 5/255.0, 152/255.0)
+			var color_con_lines = Color(0/255.0, 255/255.0, 128/255.0)
 			draw_line(lower_point, upper_point, color_con_lines, 1.0)  # Цвет соединительных линий

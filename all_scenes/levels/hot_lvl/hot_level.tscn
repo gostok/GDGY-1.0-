@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dctsuqdwcbwtp"]
+
+[ext_resource type="Script" path="res://all_scenes/levels/hot_lvl/hot_level.gd" id="1_8ni4v"]
+[ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="2_sagni"]
+
+[node name="hot_level" type="Node2D"]
+script = ExtResource("1_8ni4v")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 11
+
+[node name="Line2D" type="Line2D" parent="StaticBody2D"]
+points = PackedVector2Array(-0.181028, 703.397, 42.2001, 674.03, 81.2442, 647, 114.281, 623.307, 126.295, 614.63, 163.003, 611.627, 190.034, 595.942, 215.729, 583.261, 257.109, 576.587, 278.774, 547.723, 310.316, 556.376, 352.816, 542.376, 367.316, 507.126, 392.844, 502.626, 415.261, 464.871, 439.33, 461.096, 453.724, 431.836, 485.501, 432.78, 527.739, 433.96, 531.043, 709.099, 576.664, 705.323, 621.026, 706.975, 623.149, 480.917, 660.708, 480.209, 696.103, 478.794, 736.454, 478.086, 737.634, 549.584, 765.91, 548.876, 795.878, 548.404, 809.918, 583.092, 849.325, 589.935, 863.483, 619.903, 897.699, 619.431, 900.53, 652.466, 931.678, 643.971, 951.5, 609.048, 987.192, 630.907, 1014.74, 607.864, 1015.27, 675.935, 1042.28, 651.302, 1060.56, 635.94, 1076.45, 621.372, 1127.66, 628.788, 1173.75, 635.675, 1183.81, 680.437, 1220.36, 653.421, 1245.26, 620.578, 1261.68, 595.415, 1269.36, 594.091)
+width = 1.0
+default_color = Color(0, 1, 0.501961, 1)
+
+[node name="collision" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+
+[node name="UpperLine2D" type="Line2D" parent="."]
+width = 1.0
+default_color = Color(0, 1, 0.501961, 1)
+
+[node name="Biker" parent="." instance=ExtResource("2_sagni")]
+position = Vector2(147.119, 558.064)

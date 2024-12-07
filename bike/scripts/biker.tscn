@@ -21,14 +21,14 @@ region = Rect2(46, 29, 79, 32)
 radius = 3.38777
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x15xw"]
-radius = 9.66814
+radius = 8.86295
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_84qjm"]
-radius = 5.04127
+radius = 4.41453
 height = 20.7827
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0gdpe"]
-radius = 3.75214
+radius = 2.92246
 height = 17.9942
 
 [node name="Biker" type="RigidBody2D"]
@@ -87,7 +87,7 @@ softness = 0.4
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player/skelet_player/pins/HeadHolder/head_death"]
-position = Vector2(-0.130069, 0)
+position = Vector2(0.00266337, 0)
 scale = Vector2(0.2, 0.2)
 shape = SubResource("CircleShape2D_x15xw")
 debug_color = Color(0.966631, 0.173992, 0.148345, 0.42)
