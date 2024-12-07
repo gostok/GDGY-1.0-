@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dctsuqdwcbwtp"]
 
-[ext_resource type="Script" path="res://all_scenes/levels/hot_lvl/hot_level.gd" id="1_8ni4v"]
+[ext_resource type="Script" path="res://all_scenes/levels/light_lvl/hot_lvl/hot_level.gd" id="1_8ni4v"]
 [ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="2_sagni"]
 
 [node name="hot_level" type="Node2D"]

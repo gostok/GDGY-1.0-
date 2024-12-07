@@ -23,20 +23,20 @@ custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 theme_override_constants/separation = 35
 
-[node name="Test_Track" type="Button" parent="mc_light/VBoxContainer"]
+[node name="01" type="Button" parent="mc_light/VBoxContainer"]
 self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
-text = "Test_Track"
+text = "01"
 
-[node name="Test_2_Track" type="Button" parent="mc_light/VBoxContainer"]
+[node name="Hot" type="Button" parent="mc_light/VBoxContainer"]
 self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
-text = "None"
+text = "Hot"
 
-[node name="Test_3_Track" type="Button" parent="mc_light/VBoxContainer"]
+[node name="Council_Pyramid" type="Button" parent="mc_light/VBoxContainer"]
 self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
-text = "None"
+text = "Council Pyramid"
 
 [node name="mc_medium" type="MarginContainer" parent="."]
 visible = false
@@ -96,4 +96,6 @@ self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
 text = "None"
 
-[connection signal="pressed" from="mc_light/VBoxContainer/Test_Track" to="." method="_on_test_track_pressed"]
+[connection signal="pressed" from="mc_light/VBoxContainer/01" to="." method="_on_test_track_pressed"]
+[connection signal="pressed" from="mc_light/VBoxContainer/Hot" to="." method="_on_hot_pressed"]
+[connection signal="pressed" from="mc_light/VBoxContainer/Council_Pyramid" to="." method="_on_council_pyramid_pressed"]

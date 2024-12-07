@@ -25,11 +25,19 @@ func _show_tracks_for_level(level: String):
 			heavy_tracks.visible = true
 
 
-func _on_test_track_pressed() -> void:
-	_save_selected_track("Test_Track")
-	
-
 func _save_selected_track(track_name: String):
 	get_tree().get_root().set_meta("selected_track", track_name)
 	
 	get_tree().change_scene_to_file("res://all_scenes/menu_scenes/play_menu/play_menu.tscn")
+	
+
+func _on_test_track_pressed() -> void:
+	_save_selected_track("01")
+
+
+func _on_hot_pressed() -> void:
+	_save_selected_track("Hot")
+
+
+func _on_council_pyramid_pressed() -> void:
+	_save_selected_track("Council_Pyramid")

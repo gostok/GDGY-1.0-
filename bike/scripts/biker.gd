@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 
 
 	if Input.is_action_pressed("reset"):
-		get_tree().change_scene_to_file("res://all_scenes/test_scene/test_scene.tscn")
+		death_player()
 
 
 func handle_input(delta: float):

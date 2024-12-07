@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://dixbpkr8dfnd3"]
+
+[ext_resource type="Script" path="res://all_scenes/levels/light_lvl/council_pyramid/council_pyramid.gd" id="1_7bntn"]
+[ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="2_7vqfd"]
+
+[node name="Council_Pyramid" type="Node2D"]
+script = ExtResource("1_7bntn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 11
+
+[node name="Line2D" type="Line2D" parent="StaticBody2D"]
+points = PackedVector2Array(13.4339, 588.112, 73.8419, 588.584, 146.048, 588.584, 206.928, 587.168, 259.785, 566.875, 315.002, 547.526, 360.308, 522.985, 397.591, 494.197, 435.818, 473.432, 460.358, 448.419, 508.811, 416.327, 560.724, 372.437, 591.4, 342.233, 629.155, 324.299, 656.055, 283.713, 685.787, 252.565, 712.216, 280.881, 739.116, 318.636, 777.5, 330, 833.5, 369, 872, 421.5, 890.5, 438, 920.333, 451.5, 968.333, 472, 1011.33, 497, 1060.33, 511.5, 1113.83, 520.5, 1156.33, 521.5, 1193.92, 530.482, 1248.27, 531.373)
+width = 1.0
+default_color = Color(0, 1, 0.501961, 1)
+
+[node name="collision" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+
+[node name="UpperLine2D" type="Line2D" parent="."]
+width = 1.0
+default_color = Color(0, 1, 0.501961, 1)
+
+[node name="Biker" parent="." instance=ExtResource("2_7vqfd")]
+position = Vector2(127.193, 515.959)
+
+[node name="Label2" type="Label" parent="."]
+self_modulate = Color(0.313726, 0.2, 0.858824, 1)
+offset_left = 651.488
+offset_top = 277.227
+offset_right = 789.488
+offset_bottom = 404.227
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Мы 
+как будто живем 
+в комнате, 
+где на стене 
+висит плакат."
+horizontal_alignment = 1
