@@ -8,15 +8,18 @@ class_name BaseScenes_line
 @onready var upper_line2d = $UpperLine2D  # Новый узел Line2D для верхней трассы
 @onready var collisionP = $StaticBody2D/collision
 @onready var statbod = $StaticBody2D
-@onready var flag_start = $flags_timer/flag_start
-@onready var flag_finish = $flags_timer/flag_finish
+@onready var flag_start = $flags_timer/f_s/flag_start
+@onready var flag_finish = $flags_timer/f_f/flag_finish
 
-@onready var timer_track = preload("res://other_scripts/timer_label/panel_timer.gd").new()
 
-var offset = 12.0  # Смещение для создания верхней линии
-var collision_offset = 2.5  # Смещение для коллизии
-var ground_y = 720  # Y-координата для нижней части коллизии
-var right_x = 1280  # X-координата для правой части коллизии
+var timer = 0
+var timer_current = false
+
+var offset = 12.0 # Смещение для создания верхней линии
+var collision_offset = 2.5 # Смещение для коллизии
+var ground_y = 720 # Y-координата для нижней части коллизии
+var right_x = 1280 # X-координата для правой части коллизии
+
 
 func _ready():
 	duplicate_line()
@@ -24,8 +27,36 @@ func _ready():
 	duplicate_flags()
 	queue_redraw()
 	
-	add_child(timer_track)  # Добавляем таймер в сцену
-	timer_track._ready()  # Явно вызываем _ready() для timer_track
+	if timer_current == true:
+		set_process(true)
+	else:
+		set_process(false)
+
+
+func start_timer():
+	timer_current = true  # Запускаем таймер
+	set_process(true)  # Включаем обработку метода _process
+	print("Timer started")
+
+func stop_timer():
+	timer_current = false  # Останавливаем таймер
+	set_process(false)  # Отключаем обработку метода _process
+	print("Timer stopped")
+
+func _process(delta) -> void:
+	if timer_current:
+		timer += delta  # Увеличиваем таймер, если timer_current = true
+	
+	# Вычисляем минуты, секунды и миллисекунды
+	var sec = fmod(timer, 60)
+	var mins = fmod(timer, 60 * 60) / 60
+	var msec = fmod(timer, 1) * 100
+	
+	# Форматируем строку таймера
+	var timer_passed = "%02d:%02d.%02d" % [mins, sec, msec]
+	
+	# Обновляем текст метки
+	$other/CanvasLayer/Label.text = str(timer_passed)
 
 
 func _draw():
@@ -111,11 +142,11 @@ func draw_connecting_lines(lower_points: Array, upper_points: Array):
 
 func _on_area_2d_flagstart_body_entered(body):
 	if body.is_in_group("player"):
-		timer_track.start_timer()
 		print("start")
+		start_timer()
 
 
 func _on_area_2d_flagfinish_body_entered(body):
 	if body.is_in_group("player"):
-		timer_track.stop_timer()
 		print("finish")
+		stop_timer()

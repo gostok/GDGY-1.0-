@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://duyjqxp4t2gpt"]
+[gd_scene load_steps=8 format=3 uid="uid://duyjqxp4t2gpt"]
 
 [ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="1_sxux5"]
 [ext_resource type="Script" path="res://all_scenes/levels/light_lvl/test_scene/test_scene.gd" id="1_xh2or"]
 [ext_resource type="PackedScene" uid="uid://x84spmq16m7y" path="res://all_scenes/objects_scenes/flags_scenes/flag_finish/flag_finish.tscn" id="3_kclrc"]
 [ext_resource type="PackedScene" uid="uid://cd188ngfrnj0l" path="res://all_scenes/objects_scenes/flags_scenes/flag_start/flag_start.tscn" id="3_xnl3g"]
+[ext_resource type="PackedScene" uid="uid://cov0x5k5i5vnx" path="res://other_scripts/timer_track/timer_track.tscn" id="5_bwp3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23xam"]
 size = Vector2(10.4647, 222.138)
@@ -35,38 +36,27 @@ collision_layer = 8
 
 [node name="flags_timer" type="Node2D" parent="."]
 
-[node name="f_s" type="Node2D" parent="flags_timer"]
-
-[node name="flag_start" parent="flags_timer/f_s" instance=ExtResource("3_xnl3g")]
+[node name="flag_start" parent="flags_timer" instance=ExtResource("3_xnl3g")]
 position = Vector2(259.307, 408.804)
 
-[node name="Area2D_flagstart" type="Area2D" parent="flags_timer/f_s"]
-position = Vector2(259.307, 408.804)
+[node name="Area2D_flagstart" type="Area2D" parent="flags_timer/flag_start"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/f_s/Area2D_flagstart"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/flag_start/Area2D_flagstart"]
 position = Vector2(-3.26932, -100.133)
 shape = SubResource("RectangleShape2D_23xam")
 
-[node name="f_f" type="Node2D" parent="flags_timer"]
-
-[node name="flag_finish" parent="flags_timer/f_f" instance=ExtResource("3_kclrc")]
+[node name="flag_finish" parent="flags_timer" instance=ExtResource("3_kclrc")]
 position = Vector2(1229.18, 366.422)
 
-[node name="Area2D_flagfinish" type="Area2D" parent="flags_timer/f_f"]
-position = Vector2(1229.18, 366.422)
+[node name="Area2D_flagfinish" type="Area2D" parent="flags_timer/flag_finish"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/f_f/Area2D_flagfinish"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/flag_finish/Area2D_flagfinish"]
 position = Vector2(-3.10596, -99.7005)
 shape = SubResource("RectangleShape2D_jji45")
 
 [node name="other" type="Node2D" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="other"]
+[node name="timer_track" parent="other" instance=ExtResource("5_bwp3y")]
 
-[node name="Label" type="Label" parent="other/CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "00:00.00"
-
-[connection signal="body_entered" from="flags_timer/f_s/Area2D_flagstart" to="." method="_on_area_2d_flagstart_body_entered"]
-[connection signal="body_entered" from="flags_timer/f_f/Area2D_flagfinish" to="." method="_on_area_2d_flagfinish_body_entered"]
+[connection signal="body_entered" from="flags_timer/flag_start/Area2D_flagstart" to="." method="_on_area_2d_flagstart_body_entered"]
+[connection signal="body_entered" from="flags_timer/flag_finish/Area2D_flagfinish" to="." method="_on_area_2d_flagfinish_body_entered"]
