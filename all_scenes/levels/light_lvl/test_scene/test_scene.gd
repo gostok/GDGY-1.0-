@@ -73,13 +73,13 @@ func duplicate_collision():
 func duplicate_flags():
 	# Дублируем флаг старт
 	var start_flag_copy = flag_start.duplicate()
-	start_flag_copy.position = flag_start.position + Vector2(10, -offset)  # Смещение вправо и вверх
+	start_flag_copy.position = flag_start.position + Vector2(4, -offset)  # Смещение вправо и вверх
 	add_child(start_flag_copy)  # Добавляем копию в текущий узел
 	start_flag_copy.z_index = flag_start.z_index - 1  # Устанавливаем Z-индекс ниже оригинала
 
 	# Дублируем флаг финиш
 	var finish_flag_copy = flag_finish.duplicate()
-	finish_flag_copy.position = flag_finish.position + Vector2(10, -offset)  # Смещение вправо и вверх
+	finish_flag_copy.position = flag_finish.position + Vector2(4, -offset)  # Смещение вправо и вверх
 	add_child(finish_flag_copy)  # Добавляем копию в текущий узел
 	finish_flag_copy.z_index = flag_finish.z_index - 1  # Устанавливаем Z-индекс ниже оригинала
 
