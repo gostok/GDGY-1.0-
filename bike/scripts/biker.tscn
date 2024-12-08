@@ -216,6 +216,8 @@ node_a = NodePath("../../pins/FootHolder/foot")
 node_b = NodePath("../../pins/ShinHolder/shin")
 softness = 0.4
 
+[node name="other" type="Node2D" parent="player"]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 rotation_smoothing_enabled = true

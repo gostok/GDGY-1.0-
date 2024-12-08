@@ -20,6 +20,8 @@ var collision_offset = 2.5 # Смещение для коллизии
 var ground_y = 720 # Y-координата для нижней части коллизии
 var right_x = 1280 # X-координата для правой части коллизии
 
+@onready var timer_track_label = $other/timer_track/CanvasLayer/Label
+
 
 func _ready():
 	duplicate_line()
@@ -56,7 +58,8 @@ func _process(delta) -> void:
 	var timer_passed = "%02d:%02d.%02d" % [mins, sec, msec]
 	
 	# Обновляем текст метки
-	$other/CanvasLayer/Label.text = str(timer_passed)
+	timer_track_label.text = str(timer_passed)
+
 
 
 func _draw():

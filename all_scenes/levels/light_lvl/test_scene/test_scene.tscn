@@ -61,11 +61,15 @@ shape = SubResource("RectangleShape2D_jji45")
 
 [node name="other" type="Node2D" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="other"]
+[node name="timer_track" type="Node2D" parent="other"]
 
-[node name="Label" type="Label" parent="other/CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="CanvasLayer" type="CanvasLayer" parent="other/timer_track"]
+
+[node name="Label" type="Label" parent="other/timer_track/CanvasLayer"]
+offset_left = 2.10224
+offset_top = 1.89202
+offset_right = 66.1022
+offset_bottom = 24.892
 text = "00:00.00"
 
 [connection signal="body_entered" from="flags_timer/f_s/Area2D_flagstart" to="." method="_on_area_2d_flagstart_body_entered"]

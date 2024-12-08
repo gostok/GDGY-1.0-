@@ -11,12 +11,11 @@ enum State {
 
 var current_state = State.IDLE
 
-
 @onready var movement = preload("res://bike/scripts/playerMovement.gd").new()
 @onready var wheel_back = $wheels/WheelHolder_Back/wheel_back
 @onready var wheel_area_back = $wheels/WheelHolder_Back/wheel_back/Area2D_back
 @onready var bike_c = $bike_body
-
+@onready var foot = $player/skelet_player/pins/FootHolder/foot
 
 var wheels = []
 var deceleration = 5000
@@ -26,14 +25,20 @@ var max_speed = 16
 var is_alive = true
 var is_on_ground_back = false  # Переменная для отслеживания состояния заднего колеса
 var current_speed = 0.0  # Текущая скорость
+var is_in_air = false  # Переменная для отслеживания, в воздухе ли байкер
+
+
 
 func _ready() -> void:
 	add_child(movement)
+
+
 
 func _physics_process(delta: float) -> void:
 
 	handle_input(delta)
 	update_movement(delta)
+
 
 	if Input.is_action_pressed("run"):
 		if wheel_back.angular_velocity < max_speed:
@@ -128,8 +133,10 @@ func _on_hand_death_body_entered(body) -> void:
 func _on_area_2d_back_body_entered(body: Node2D) -> void:
 	if body is StaticBody2D:
 		is_on_ground_back = true
+		is_in_air = false
 
 
 func _on_area_2d_back_body_exited(body: Node2D) -> void:
 	if body is StaticBody2D:
 		is_on_ground_back = false
+		is_in_air = true
