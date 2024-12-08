@@ -18,7 +18,7 @@ script = ExtResource("1_7bntn")
 collision_mask = 11
 
 [node name="Line2D" type="Line2D" parent="StaticBody2D"]
-points = PackedVector2Array(13.4339, 588.112, 73.8419, 588.584, 146.048, 588.584, 206.928, 587.168, 259.785, 566.875, 315.002, 547.526, 360.308, 522.985, 397.591, 494.197, 435.818, 473.432, 460.358, 448.419, 508.811, 416.327, 560.724, 372.437, 591.4, 342.233, 629.155, 324.299, 656.055, 283.713, 685.787, 252.565, 712.216, 280.881, 739.116, 318.636, 777.5, 330, 833.5, 369, 872, 421.5, 890.5, 438, 920.333, 451.5, 968.333, 472, 1011.33, 497, 1060.33, 511.5, 1113.83, 520.5, 1156.33, 521.5, 1193.92, 530.482, 1248.27, 531.373)
+points = PackedVector2Array(64, 576, 128, 576, 192, 576, 256, 544, 320, 512, 384, 480, 448, 448, 512, 416, 576, 384, 640, 352, 704, 384, 768, 416, 832, 448, 896, 480, 960, 512, 1024, 544, 1088, 576, 1152, 576, 1216, 576)
 width = 1.0
 default_color = Color(0, 1, 0.501961, 1)
 
@@ -35,7 +35,7 @@ position = Vector2(127.193, 515.959)
 [node name="flags_timer" type="Node2D" parent="."]
 
 [node name="flag_start" parent="flags_timer" instance=ExtResource("2_gvjwl")]
-position = Vector2(259.307, 408.804)
+position = Vector2(194.011, 565.33)
 
 [node name="Area2D_flagstart" type="Area2D" parent="flags_timer/flag_start"]
 
@@ -43,20 +43,14 @@ position = Vector2(259.307, 408.804)
 position = Vector2(-3.26932, -100.133)
 shape = SubResource("RectangleShape2D_fulv6")
 
-[node name="Timer" type="Timer" parent="flags_timer"]
-
 [node name="flag_finish" parent="flags_timer" instance=ExtResource("3_rcpxj")]
-position = Vector2(1229.18, 366.422)
+position = Vector2(1106.85, 565.163)
 
 [node name="Area2D_flagfinish" type="Area2D" parent="flags_timer/flag_finish"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/flag_finish/Area2D_flagfinish"]
 position = Vector2(-3.10596, -99.7005)
 shape = SubResource("RectangleShape2D_ey1s2")
-
-[node name="Biker" parent="flags_timer" instance=ExtResource("2_7vqfd")]
-position = Vector2(213.627, 385.105)
-collision_layer = 8
 
 [node name="Label2" type="Label" parent="."]
 self_modulate = Color(0.313726, 0.2, 0.858824, 1)
