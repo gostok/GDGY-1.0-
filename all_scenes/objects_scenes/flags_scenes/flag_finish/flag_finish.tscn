@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://x84spmq16m7y"]
+
+[ext_resource type="Texture2D" uid="uid://bi3sbptful40k" path="res://assets/objects/flag_finish.png" id="1_dn7mo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63k26"]
+atlas = ExtResource("1_dn7mo")
+region = Rect2(0, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucjki"]
+atlas = ExtResource("1_dn7mo")
+region = Rect2(60, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boxob"]
+atlas = ExtResource("1_dn7mo")
+region = Rect2(120, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1byl"]
+atlas = ExtResource("1_dn7mo")
+region = Rect2(180, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4tpb"]
+atlas = ExtResource("1_dn7mo")
+region = Rect2(240, 0, 60, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kff44"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63k26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucjki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boxob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1byl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4tpb")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}]
+
+[node name="flag_finish" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_kff44")
+animation = &"Idle"
+autoplay = "Idle"

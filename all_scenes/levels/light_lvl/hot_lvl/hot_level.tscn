@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dctsuqdwcbwtp"]
+[gd_scene load_steps=7 format=3 uid="uid://dctsuqdwcbwtp"]
 
 [ext_resource type="Script" path="res://all_scenes/levels/light_lvl/hot_lvl/hot_level.gd" id="1_8ni4v"]
+[ext_resource type="PackedScene" uid="uid://cd188ngfrnj0l" path="res://all_scenes/objects_scenes/flags_scenes/flag_start/flag_start.tscn" id="2_2w8nb"]
 [ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="2_sagni"]
+[ext_resource type="PackedScene" uid="uid://x84spmq16m7y" path="res://all_scenes/objects_scenes/flags_scenes/flag_finish/flag_finish.tscn" id="3_lqmtk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j562q"]
+size = Vector2(10.4647, 222.138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h8qpd"]
+size = Vector2(10.465, 222.138)
 
 [node name="hot_level" type="Node2D"]
 script = ExtResource("1_8ni4v")
@@ -23,3 +31,25 @@ default_color = Color(0, 1, 0.501961, 1)
 
 [node name="Biker" parent="." instance=ExtResource("2_sagni")]
 position = Vector2(147.119, 558.064)
+
+[node name="flags_timer" type="Node2D" parent="."]
+
+[node name="flag_start" parent="flags_timer" instance=ExtResource("2_2w8nb")]
+position = Vector2(226.146, 572.006)
+
+[node name="Area2D_flagstart" type="Area2D" parent="flags_timer/flag_start"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/flag_start/Area2D_flagstart"]
+position = Vector2(-3.26932, -100.133)
+shape = SubResource("RectangleShape2D_j562q")
+
+[node name="Timer" type="Timer" parent="flags_timer"]
+
+[node name="flag_finish" parent="flags_timer" instance=ExtResource("3_lqmtk")]
+position = Vector2(1139.68, 618.385)
+
+[node name="Area2D_flagfinish" type="Area2D" parent="flags_timer/flag_finish"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/flag_finish/Area2D_flagfinish"]
+position = Vector2(-3.10596, -99.7005)
+shape = SubResource("RectangleShape2D_h8qpd")

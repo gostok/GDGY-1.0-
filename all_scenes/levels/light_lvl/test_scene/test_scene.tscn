@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://duyjqxp4t2gpt"]
+[gd_scene load_steps=8 format=3 uid="uid://duyjqxp4t2gpt"]
 
 [ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="1_sxux5"]
 [ext_resource type="Script" path="res://all_scenes/levels/light_lvl/test_scene/test_scene.gd" id="1_xh2or"]
+[ext_resource type="PackedScene" uid="uid://x84spmq16m7y" path="res://all_scenes/objects_scenes/flags_scenes/flag_finish/flag_finish.tscn" id="3_kclrc"]
+[ext_resource type="PackedScene" uid="uid://cd188ngfrnj0l" path="res://all_scenes/objects_scenes/flags_scenes/flag_start/flag_start.tscn" id="3_xnl3g"]
+[ext_resource type="Script" path="res://other_scripts/timer_label/panel_timer.gd" id="5_uhiyw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23xam"]
+size = Vector2(10.4647, 222.138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jji45"]
+size = Vector2(10.465, 222.138)
 
 [node name="Test_scene" type="Node2D"]
 script = ExtResource("1_xh2or")
@@ -24,3 +33,75 @@ default_color = Color(0, 1, 0.501961, 1)
 [node name="Biker" parent="." instance=ExtResource("1_sxux5")]
 position = Vector2(213.627, 385.105)
 collision_layer = 8
+
+[node name="flags_timer" type="Node2D" parent="."]
+
+[node name="flag_start" parent="flags_timer" instance=ExtResource("3_xnl3g")]
+position = Vector2(259.307, 408.804)
+
+[node name="Area2D_flagstart" type="Area2D" parent="flags_timer/flag_start"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/flag_start/Area2D_flagstart"]
+position = Vector2(-3.26932, -100.133)
+shape = SubResource("RectangleShape2D_23xam")
+
+[node name="flag_finish" parent="flags_timer" instance=ExtResource("3_kclrc")]
+position = Vector2(1229.18, 366.422)
+
+[node name="Area2D_flagfinish" type="Area2D" parent="flags_timer/flag_finish"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/flag_finish/Area2D_flagfinish"]
+position = Vector2(-3.10596, -99.7005)
+shape = SubResource("RectangleShape2D_jji45")
+
+[node name="other" type="Node2D" parent="."]
+
+[node name="timer_label" type="Node2D" parent="other"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="other/timer_label"]
+
+[node name="Panel_timer" type="Panel" parent="other/timer_label/CanvasLayer"]
+offset_left = 9.0
+offset_top = 10.0
+offset_right = 161.0
+offset_bottom = 50.0
+scale = Vector2(2.18786, 1.02266)
+script = ExtResource("5_uhiyw")
+
+[node name="Label" type="Label" parent="other/timer_label/CanvasLayer/Panel_timer"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 5.64345
+offset_top = 6.0
+offset_right = 66.6434
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 19
+text = "timer: "
+vertical_alignment = 1
+
+[node name="min" type="Label" parent="other/timer_label/CanvasLayer/Panel_timer"]
+layout_mode = 2
+offset_left = 70.6434
+offset_top = 8.0
+offset_right = 93.6434
+offset_bottom = 31.0
+text = "00:"
+
+[node name="sec" type="Label" parent="other/timer_label/CanvasLayer/Panel_timer"]
+layout_mode = 2
+offset_left = 97.6435
+offset_top = 8.0
+offset_right = 120.643
+offset_bottom = 31.0
+text = "00."
+
+[node name="msec" type="Label" parent="other/timer_label/CanvasLayer/Panel_timer"]
+layout_mode = 2
+offset_left = 124.643
+offset_top = 8.0
+offset_right = 143.643
+offset_bottom = 31.0
+text = "00"
+
+[connection signal="body_entered" from="flags_timer/flag_start/Area2D_flagstart" to="." method="_on_area_2d_flagstart_body_entered"]
+[connection signal="body_entered" from="flags_timer/flag_finish/Area2D_flagfinish" to="." method="_on_area_2d_flagfinish_body_entered"]

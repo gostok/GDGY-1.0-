@@ -31,7 +31,7 @@ height = 20.7827
 radius = 2.92246
 height = 17.9942
 
-[node name="Biker" type="RigidBody2D"]
+[node name="Biker" type="RigidBody2D" groups=["player"]]
 mass = 12.0
 script = ExtResource("1_1r8vo")
 

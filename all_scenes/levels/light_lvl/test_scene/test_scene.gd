@@ -2,10 +2,16 @@ extends Node2D
 
 class_name BaseScenes_line
 
+@onready var biker_player = $Biker
+
 @onready var line2d = $StaticBody2D/Line2D  # Ваш узел Line2D
 @onready var upper_line2d = $UpperLine2D  # Новый узел Line2D для верхней трассы
 @onready var collisionP = $StaticBody2D/collision
 @onready var statbod = $StaticBody2D
+@onready var flag_start = $flags_timer/flag_start
+@onready var flag_finish = $flags_timer/flag_finish
+
+@onready var timer_track = preload("res://other_scripts/timer_label/panel_timer.gd").new()
 
 var offset = 12.0  # Смещение для создания верхней линии
 var collision_offset = 2.5  # Смещение для коллизии
@@ -15,7 +21,12 @@ var right_x = 1280  # X-координата для правой части ко
 func _ready():
 	duplicate_line()
 	duplicate_collision()
+	duplicate_flags()
 	queue_redraw()
+	
+	add_child(timer_track)  # Добавляем таймер в сцену
+	timer_track._ready()  # Явно вызываем _ready() для timer_track
+
 
 func _draw():
 	var lower_points = line2d.points
@@ -58,6 +69,22 @@ func duplicate_collision():
 	statbod.add_child(new_collision)
 	new_collision.set_deferred("disabled", false)
 
+
+func duplicate_flags():
+	# Дублируем флаг старт
+	var start_flag_copy = flag_start.duplicate()
+	start_flag_copy.position = flag_start.position + Vector2(10, -offset)  # Смещение вправо и вверх
+	add_child(start_flag_copy)  # Добавляем копию в текущий узел
+	start_flag_copy.z_index = flag_start.z_index - 1  # Устанавливаем Z-индекс ниже оригинала
+
+	# Дублируем флаг финиш
+	var finish_flag_copy = flag_finish.duplicate()
+	finish_flag_copy.position = flag_finish.position + Vector2(10, -offset)  # Смещение вправо и вверх
+	add_child(finish_flag_copy)  # Добавляем копию в текущий узел
+	finish_flag_copy.z_index = flag_finish.z_index - 1  # Устанавливаем Z-индекс ниже оригинала
+
+
+
 func get_polygon_between_lines(lower_points: Array, upper_points: Array) -> Array:
 	var polygon = []
 	
@@ -80,3 +107,15 @@ func draw_connecting_lines(lower_points: Array, upper_points: Array):
 			var upper_point = upper_points[i]
 			var color_con_lines = Color(0/255.0, 255/255.0, 128/255.0)
 			draw_line(lower_point, upper_point, color_con_lines, 1.0)  # Цвет соединительных линий
+
+
+func _on_area_2d_flagstart_body_entered(body):
+	if body.is_in_group("player"):
+		timer_track.start_timer()
+		print("start")
+
+
+func _on_area_2d_flagfinish_body_entered(body):
+	if body.is_in_group("player"):
+		timer_track.stop_timer()
+		print("finish")
