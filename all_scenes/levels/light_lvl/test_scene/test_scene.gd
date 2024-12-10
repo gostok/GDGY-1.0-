@@ -23,6 +23,7 @@ var right_x = 1280 # X-координата для правой части ко�
 @onready var timer_track_label = $other/timer_track/CanvasLayer/Label
 
 
+
 func _ready():
 	duplicate_line()
 	duplicate_collision()
@@ -42,6 +43,7 @@ func start_timer():
 
 func stop_timer():
 	timer_current = false  # Останавливаем таймер
+	
 	set_process(false)  # Отключаем обработку метода _process
 	print("Timer stopped")
 
@@ -153,3 +155,13 @@ func _on_area_2d_flagfinish_body_entered(body):
 	if body.is_in_group("player"):
 		print("finish")
 		stop_timer()
+
+		# сохраняем и передаем время прохождения трека
+		timer = timer_track_label.text
+		_save_timer_track(timer)
+
+
+func _save_timer_track(timer: String):
+	get_tree().get_root().set_meta("timer_record", timer)
+	
+	get_tree().change_scene_to_file("res://all_scenes/menu_scenes/menu_completed_lvl/level_comleted/level_completed.tscn")

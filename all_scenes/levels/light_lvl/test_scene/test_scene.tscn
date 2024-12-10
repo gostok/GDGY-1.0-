@@ -48,6 +48,7 @@ position = Vector2(-3.26932, -100.133)
 shape = SubResource("RectangleShape2D_23xam")
 
 [node name="f_f" type="Node2D" parent="flags_timer"]
+position = Vector2(6.66727, 0.419983)
 
 [node name="flag_finish" parent="flags_timer/f_f" instance=ExtResource("3_kclrc")]
 position = Vector2(1229.18, 366.422)

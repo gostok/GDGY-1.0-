@@ -20,7 +20,7 @@ var current_state = State.IDLE
 var wheels = []
 var deceleration = 5000
 var speed = 1500
-var max_speed = 16
+var max_speed = 18
 
 var is_alive = true
 var is_on_ground_back = false  # Переменная для отслеживания состояния заднего колеса

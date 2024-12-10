@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+class_name BaseTrack
 
 @onready var light_tracks = $mc_light
 @onready var medium_tracks = $mc_medium
