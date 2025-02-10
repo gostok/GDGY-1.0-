@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://dunu5ejm86tvh"]
+
+[ext_resource type="Script" path="res://all_scenes/menu_scenes/main_menu/main_menu.gd" id="1_baghq"]
+[ext_resource type="Texture2D" uid="uid://dtwxi5aby2qyc" path="res://assets/others/Sprite-0001.png" id="2_oxcta"]
+[ext_resource type="PackedScene" uid="uid://dprwqh7rftr0d" path="res://all_scenes/menu_scenes/bg_menu/bg_menu.tscn" id="2_xv4tq"]
+[ext_resource type="Shader" path="res://other_scripts/button_menu.gdshader" id="3_qu5ib"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6vsca"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qwcx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkddt"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8r5mv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_enm3p"]
+shader = ExtResource("3_qu5ib")
+
+[node name="main_menu" type="CanvasLayer"]
+script = ExtResource("1_baghq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.5
+offset_top = -85.5
+offset_right = 44.5
+offset_bottom = 85.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(0, 8)
+scale = Vector2(4.68339, 0.908027)
+texture = ExtResource("2_oxcta")
+centered = false
+
+[node name="Play_menu_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
+texture_filter = 1
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6vsca")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7qwcx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mkddt")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8r5mv")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Play_menu_bt"]
+modulate = Color(0.898039, 0.0823529, 0.74902, 1)
+material = SubResource("ShaderMaterial_enm3p")
+layout_mode = 0
+offset_left = 6.0
+offset_top = -8.0
+offset_right = 300.0
+offset_bottom = 13.0
+text = "Play Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
+layout_mode = 2
+text = "Options"
+
+[node name="Help_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
+layout_mode = 2
+text = "Help"
+
+[node name="About_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
+layout_mode = 2
+text = "About"
+
+[node name="Exit_game_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
+layout_mode = 2
+text = "Exit Game"
+
+[node name="BgMenu" parent="." instance=ExtResource("2_xv4tq")]
+position = Vector2(32, -8)
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play_menu_bt" to="." method="_on_play_menu_bt_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options_bt" to="." method="_on_options_bt_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit_game_bt" to="." method="_on_exit_game_bt_pressed"]

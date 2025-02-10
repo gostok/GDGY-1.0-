@@ -1,0 +1,152 @@
+[gd_scene load_steps=5 format=3 uid="uid://dprwqh7rftr0d"]
+
+[ext_resource type="Texture2D" uid="uid://cr2u26lg8mpcu" path="res://assets/bg/bg_menu/Retro BG 1 a.png" id="1_j4t5v"]
+[ext_resource type="Script" path="res://all_scenes/menu_scenes/bg_menu/bg_menu.gd" id="1_xrhy3"]
+[ext_resource type="Texture2D" uid="uid://cjfa53fts27a7" path="res://assets/bg/bg_menu/Retro BG 1 c.png" id="2_dyowj"]
+[ext_resource type="PackedScene" uid="uid://cyfqvt2pqi7up" path="res://all_scenes/objects_scenes/light_sc/star_light.tscn" id="4_xdcp1"]
+
+[node name="BgMenu" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+script = ExtResource("1_xrhy3")
+
+[node name="1" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/1"]
+texture = ExtResource("1_j4t5v")
+centered = false
+
+[node name="2" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/2"]
+texture = ExtResource("2_dyowj")
+centered = false
+
+[node name="3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="stars" type="Node2D" parent="ParallaxBackground/3"]
+
+[node name="StarLight" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(46, 26.1123)
+scale = Vector2(1.67841, 1.67841)
+
+[node name="StarLight2" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(30.3929, 133.789)
+scale = Vector2(1.67841, 1.67841)
+
+[node name="StarLight3" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(226.671, 133.789)
+scale = Vector2(1.67841, 1.67841)
+
+[node name="StarLight4" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(345.787, 26.6596)
+scale = Vector2(1.67841, 1.67841)
+
+[node name="StarLight5" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(333.523, 138.283)
+scale = Vector2(1.67841, 1.67841)
+
+[node name="StarLight6" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(497.757, 137.812)
+scale = Vector2(1.67841, 1.67841)
+
+[node name="StarLight8" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(782.572, 33.7559)
+scale = Vector2(1.67841, 1.67841)
+
+[node name="StarLight9" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(934.196, 130.082)
+scale = Vector2(2.34734, 2.34734)
+
+[node name="StarLight10" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(946.088, 33.7559)
+scale = Vector2(1.67841, 1.67841)
+
+[node name="StarLight11" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(1054.15, 30.0478)
+scale = Vector2(1.67841, 1.67841)
+
+[node name="StarLight12" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(1250.15, 29.518)
+scale = Vector2(1.67841, 1.67841)
+
+[node name="StarLight13" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(1233.73, 131.226)
+scale = Vector2(2.62199, 2.62199)
+
+[node name="StarLight7" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(546.367, 70.3245)
+scale = Vector2(2.94674, 2.94674)
+
+[node name="StarLight14" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(1326, 26.1123)
+scale = Vector2(1.67841, 1.67841)
+energy = 1.0
+
+[node name="StarLight15" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(1310.39, 133.789)
+scale = Vector2(1.67841, 1.67841)
+energy = 1.0
+
+[node name="StarLight16" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(1506.67, 133.789)
+scale = Vector2(1.67841, 1.67841)
+energy = 1.0
+
+[node name="StarLight17" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(1625.79, 26.6596)
+scale = Vector2(1.67841, 1.67841)
+energy = 1.0
+
+[node name="StarLight18" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(1613.52, 138.283)
+scale = Vector2(1.67841, 1.67841)
+energy = 1.0
+
+[node name="StarLight19" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(1777.76, 137.812)
+scale = Vector2(1.67841, 1.67841)
+energy = 1.0
+
+[node name="StarLight20" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(2062.57, 33.7559)
+scale = Vector2(1.67841, 1.67841)
+energy = 1.0
+
+[node name="StarLight21" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(2214.2, 130.082)
+scale = Vector2(2.34734, 2.34734)
+energy = 1.0
+
+[node name="StarLight22" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(2226.09, 33.7559)
+scale = Vector2(1.67841, 1.67841)
+energy = 1.0
+
+[node name="StarLight23" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(2334.15, 30.0478)
+scale = Vector2(1.67841, 1.67841)
+energy = 1.0
+
+[node name="StarLight24" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(2530.15, 29.518)
+scale = Vector2(1.67841, 1.67841)
+energy = 1.0
+
+[node name="StarLight25" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(2513.73, 131.226)
+scale = Vector2(2.62199, 2.62199)
+energy = 1.0
+
+[node name="StarLight26" parent="ParallaxBackground/3/stars" instance=ExtResource("4_xdcp1")]
+position = Vector2(1826.37, 70.3245)
+scale = Vector2(2.94674, 2.94674)
+energy = 1.0

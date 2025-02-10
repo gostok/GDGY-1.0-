@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyfqvt2pqi7up"]
+
+[ext_resource type="Texture2D" uid="uid://cvawfx38ixse5" path="res://assets/others/spotlight_6.png" id="1_q6oxi"]
+[ext_resource type="Script" path="res://all_scenes/objects_scenes/light_sc/star_light.gd" id="2_7k6rl"]
+
+[node name="StarLight" type="PointLight2D"]
+energy = 1.5
+range_layer_min = -1
+texture = ExtResource("1_q6oxi")
+script = ExtResource("2_7k6rl")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

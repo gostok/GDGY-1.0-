@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rnu2eqlbw80b"
-path="res://.godot/imported/-3.png-13c1655b7d2656f7ec8b26b6060a34ec.ctex"
+uid="uid://cjfa53fts27a7"
+path="res://.godot/imported/Retro BG 1 c.png-b1f28194df1e43033e1f4d3fd2530b54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/city/-3.png"
-dest_files=["res://.godot/imported/-3.png-13c1655b7d2656f7ec8b26b6060a34ec.ctex"]
+source_file="res://assets/bg/bg_menu/Retro BG 1 c.png"
+dest_files=["res://.godot/imported/Retro BG 1 c.png-b1f28194df1e43033e1f4d3fd2530b54.ctex"]
 
 [params]
 

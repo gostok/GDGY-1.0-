@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjr2dtt7ne5ve"]
+
+[ext_resource type="Texture2D" uid="uid://cvawfx38ixse5" path="res://assets/others/spotlight_6.png" id="1_udpid"]
+
+[node name="Lantern" type="PointLight2D"]
+scale = Vector2(0.62, 0.62)
+color = Color(0.945017, 0.931949, 0.758964, 1)
+energy = 1.5
+blend_mode = 1
+range_layer_min = -1
+texture = ExtResource("1_udpid")
