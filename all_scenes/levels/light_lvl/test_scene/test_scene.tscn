@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://duyjqxp4t2gpt"]
+[gd_scene load_steps=8 format=3 uid="uid://duyjqxp4t2gpt"]
 
 [ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="1_sxux5"]
 [ext_resource type="Script" path="res://all_scenes/levels/light_lvl/test_scene/test_scene.gd" id="1_xh2or"]
 [ext_resource type="PackedScene" uid="uid://x84spmq16m7y" path="res://all_scenes/objects_scenes/flags_scenes/flag_finish/flag_finish.tscn" id="3_kclrc"]
 [ext_resource type="PackedScene" uid="uid://cd188ngfrnj0l" path="res://all_scenes/objects_scenes/flags_scenes/flag_start/flag_start.tscn" id="3_xnl3g"]
+[ext_resource type="PackedScene" uid="uid://qrqrxxtwa04n" path="res://all_scenes/objects_scenes/fps_sc/fps_scene.tscn" id="5_mdfsn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23xam"]
 size = Vector2(10.4647, 222.138)
@@ -72,6 +73,8 @@ offset_top = 1.89202
 offset_right = 66.1022
 offset_bottom = 24.892
 text = "00:00.00"
+
+[node name="FpsScene" parent="." instance=ExtResource("5_mdfsn")]
 
 [connection signal="body_entered" from="flags_timer/f_s/Area2D_flagstart" to="." method="_on_area_2d_flagstart_body_entered"]
 [connection signal="body_entered" from="flags_timer/f_f/Area2D_flagfinish" to="." method="_on_area_2d_flagfinish_body_entered"]

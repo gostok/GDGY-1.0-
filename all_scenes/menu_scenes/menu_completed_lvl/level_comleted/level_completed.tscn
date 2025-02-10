@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://8gayh6nwroqe"]
+[gd_scene load_steps=8 format=3 uid="uid://8gayh6nwroqe"]
 
 [ext_resource type="Script" path="res://all_scenes/menu_scenes/menu_completed_lvl/level_comleted/level_completed.gd" id="1_2eens"]
+[ext_resource type="Texture2D" uid="uid://dtwxi5aby2qyc" path="res://assets/others/Sprite-0001.png" id="2_vo7hi"]
+[ext_resource type="PackedScene" uid="uid://cjr2dtt7ne5ve" path="res://all_scenes/objects_scenes/light_sc/lantern.tscn" id="3_8xvb0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_brbk2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n363d"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fgyir"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sio8u"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="level_completed" type="CanvasLayer"]
 script = ExtResource("1_2eens")
@@ -38,9 +51,23 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "00:00.00"
 
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(-13.3687, 162.106)
+scale = Vector2(4.68339, 0.908027)
+texture = ExtResource("2_vo7hi")
+centered = false
+
 [node name="ok_btn" type="Button" parent="MarginContainer/VBoxContainer"]
 self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_brbk2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n363d")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fgyir")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sio8u")
 text = "OK"
+
+[node name="Lantern" parent="MarginContainer/VBoxContainer/ok_btn" instance=ExtResource("3_8xvb0")]
+position = Vector2(135.375, 11)
+scale = Vector2(12.5, 4.25)
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ok_btn" to="." method="_on_ok_btn_pressed"]

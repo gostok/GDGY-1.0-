@@ -1,9 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://bk3vpr6inn2lv"]
+[gd_scene load_steps=17 format=3 uid="uid://bk3vpr6inn2lv"]
 
 [ext_resource type="Script" path="res://all_scenes/menu_scenes/play_menu/level_menu/level_menu.gd" id="1_4nift"]
+[ext_resource type="Texture2D" uid="uid://dtwxi5aby2qyc" path="res://assets/others/Sprite-0001.png" id="2_nhb2l"]
+[ext_resource type="PackedScene" uid="uid://cjr2dtt7ne5ve" path="res://all_scenes/objects_scenes/light_sc/lantern.tscn" id="3_di3kl"]
+[ext_resource type="PackedScene" uid="uid://dprwqh7rftr0d" path="res://all_scenes/menu_scenes/bg_menu/bg_menu.tscn" id="4_3unrj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_caneq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrols"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qssd3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c32dc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_046fg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uhum"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6iong"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7t45k"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b13sv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8rd0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fd8q4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncaf5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Level_menu" type="CanvasLayer"]
 script = ExtResource("1_4nift")
+
+[node name="BgMenu" parent="." instance=ExtResource("4_3unrj")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 8
@@ -23,17 +61,62 @@ custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 theme_override_constants/separation = 35
 
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(0, -3.108)
+scale = Vector2(4.68339, 0.908027)
+texture = ExtResource("2_nhb2l")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(0, 53.8558)
+scale = Vector2(4.68339, 0.908027)
+texture = ExtResource("2_nhb2l")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(0, 109.523)
+scale = Vector2(4.68339, 0.908027)
+texture = ExtResource("2_nhb2l")
+centered = false
+
 [node name="Light_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_caneq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yrols")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qssd3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_c32dc")
 text = "Light"
 
+[node name="Lantern" parent="MarginContainer/VBoxContainer/Light_bt" instance=ExtResource("3_di3kl")]
+position = Vector2(150, 11)
+scale = Vector2(12.5, 4.25)
+
 [node name="Medium_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_046fg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4uhum")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6iong")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7t45k")
 text = "Medium"
 
+[node name="Lantern" parent="MarginContainer/VBoxContainer/Medium_bt" instance=ExtResource("3_di3kl")]
+position = Vector2(150, 11)
+scale = Vector2(12.5, 4.25)
+
 [node name="Heavy_bt" type="Button" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b13sv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c8rd0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fd8q4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ncaf5")
 text = "Heavy"
+
+[node name="Lantern" parent="MarginContainer/VBoxContainer/Heavy_bt" instance=ExtResource("3_di3kl")]
+position = Vector2(150, 11)
+scale = Vector2(12.5, 4.25)
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Light_bt" to="." method="_on_light_bt_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Medium_bt" to="." method="_on_medium_bt_pressed"]

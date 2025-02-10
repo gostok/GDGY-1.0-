@@ -1,9 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://eclfvjvgteey"]
+[gd_scene load_steps=9 format=3 uid="uid://eclfvjvgteey"]
 
 [ext_resource type="Script" path="res://all_scenes/menu_scenes/main_menu/options_menu/options_menu.gd" id="1_1p0ty"]
+[ext_resource type="PackedScene" uid="uid://dprwqh7rftr0d" path="res://all_scenes/menu_scenes/bg_menu/bg_menu.tscn" id="2_7uhdl"]
+[ext_resource type="PackedScene" uid="uid://cjr2dtt7ne5ve" path="res://all_scenes/objects_scenes/light_sc/lantern.tscn" id="3_bd6rx"]
+[ext_resource type="Texture2D" uid="uid://dtwxi5aby2qyc" path="res://assets/others/Sprite-0001.png" id="4_m6y2t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cvlux"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcgme"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5sqdj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8loob"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Options_menu" type="CanvasLayer"]
 script = ExtResource("1_1p0ty")
+
+[node name="BgMenu" parent="." instance=ExtResource("2_7uhdl")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 8
@@ -30,6 +46,10 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "control"
 horizontal_alignment = 1
 
+[node name="Lantern" parent="MarginContainer/VBoxContainer/Label" instance=ExtResource("3_bd6rx")]
+position = Vector2(201.619, 11.7071)
+scale = Vector2(12.5, 4.25)
+
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
 self_modulate = Color(0.313726, 0.2, 0.858824, 1)
 layout_mode = 2
@@ -38,9 +58,31 @@ text = "   A - run                     <- - tilt to the left
    D - stop                   -> - tilt to the right 
    P - reset level"
 
+[node name="Lantern" parent="MarginContainer/VBoxContainer/Label2" instance=ExtResource("3_bd6rx")]
+position = Vector2(66.5614, 36.4559)
+scale = Vector2(12.5, 4.25)
+
+[node name="Lantern2" parent="MarginContainer/VBoxContainer/Label2" instance=ExtResource("3_bd6rx")]
+position = Vector2(326.685, 36.4559)
+scale = Vector2(12.5, 4.25)
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(49.8711, 157.705)
+scale = Vector2(4.68339, 0.908027)
+texture = ExtResource("4_m6y2t")
+centered = false
+
 [node name="back_bt" type="Button" parent="MarginContainer/VBoxContainer"]
 self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cvlux")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jcgme")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5sqdj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8loob")
 text = "Back"
+
+[node name="Lantern" parent="MarginContainer/VBoxContainer/back_bt" instance=ExtResource("3_bd6rx")]
+position = Vector2(201.136, 11)
+scale = Vector2(12.5, 4.25)
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/back_bt" to="." method="_on_back_bt_pressed"]

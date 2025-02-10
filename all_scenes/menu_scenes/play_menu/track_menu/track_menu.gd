@@ -9,6 +9,10 @@ class_name BaseTrack
 
 func _ready() -> void:
 	var selected_level = get_tree().get_root().get_meta("selected_level")
+	
+	if selected_level == null:
+		return
+	
 	_show_tracks_for_level(selected_level)
 
 
