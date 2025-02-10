@@ -30,6 +30,7 @@ texture = ExtResource("2_dyowj")
 centered = false
 
 [node name="3" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
 motion_scale = Vector2(0.1, 0.1)
 
 [node name="stars" type="Node2D" parent="ParallaxBackground/3"]

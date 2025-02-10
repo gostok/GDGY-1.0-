@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://duyjqxp4t2gpt"]
+[gd_scene load_steps=9 format=3 uid="uid://duyjqxp4t2gpt"]
 
 [ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="1_sxux5"]
 [ext_resource type="Script" path="res://all_scenes/levels/light_lvl/test_scene/test_scene.gd" id="1_xh2or"]
+[ext_resource type="PackedScene" uid="uid://bh7od2advoqe4" path="res://all_scenes/levels/bg_levels/bg_vice/bg_vice.tscn" id="2_rwtey"]
 [ext_resource type="PackedScene" uid="uid://x84spmq16m7y" path="res://all_scenes/objects_scenes/flags_scenes/flag_finish/flag_finish.tscn" id="3_kclrc"]
 [ext_resource type="PackedScene" uid="uid://cd188ngfrnj0l" path="res://all_scenes/objects_scenes/flags_scenes/flag_start/flag_start.tscn" id="3_xnl3g"]
 [ext_resource type="PackedScene" uid="uid://qrqrxxtwa04n" path="res://all_scenes/objects_scenes/fps_sc/fps_scene.tscn" id="5_mdfsn"]
@@ -13,7 +14,25 @@ size = Vector2(10.4647, 222.138)
 size = Vector2(10.465, 222.138)
 
 [node name="Test_scene" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_xh2or")
+
+[node name="lights" type="Node2D" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="lights"]
+energy = 0.2
+blend_mode = 1
+range_layer_min = -1
+
+[node name="BgVice" parent="." instance=ExtResource("2_rwtey")]
+z_index = -1
+
+[node name="ParallaxBackground" parent="BgVice" index="0"]
+scale = Vector2(0.38, 0.38)
+transform = Transform2D(0.38, 0, 0, 0.38, 0, 0)
+
+[node name="Sprite2D" parent="BgVice/ParallaxBackground/ParallaxLayer3" index="0"]
+position = Vector2(0, 60)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_mask = 11
@@ -78,3 +97,5 @@ text = "00:00.00"
 
 [connection signal="body_entered" from="flags_timer/f_s/Area2D_flagstart" to="." method="_on_area_2d_flagstart_body_entered"]
 [connection signal="body_entered" from="flags_timer/f_f/Area2D_flagfinish" to="." method="_on_area_2d_flagfinish_body_entered"]
+
+[editable path="BgVice"]
