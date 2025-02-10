@@ -30,6 +30,11 @@ player=""
 wheel=""
 ground=""
 
+[gui]
+
+theme/custom_font="res://assets/fonts/Retro Gaming.ttf"
+theme/default_font_antialiasing=0
+
 [input]
 
 left={

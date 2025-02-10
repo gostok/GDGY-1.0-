@@ -161,7 +161,7 @@ func _on_area_2d_flagfinish_body_entered(body):
 		_save_timer_track(timer)
 
 
-func _save_timer_track(timer: String):
-	get_tree().get_root().set_meta("timer_record", timer)
+func _save_timer_track(timer_track: String):
+	get_tree().get_root().set_meta("timer_record", timer_track)
 	
 	get_tree().change_scene_to_file("res://all_scenes/menu_scenes/menu_completed_lvl/level_comleted/level_completed.tscn")
