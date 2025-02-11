@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://ww0ymtvaxdtj"
+path="res://.godot/imported/vice_dialogue.dialogue-883e84366b68d5ba61631f148b938aba.tres"
+
+[deps]
+
+source_file="res://dialogue/vice_dialogue.dialogue"
+dest_files=["res://.godot/imported/vice_dialogue.dialogue-883e84366b68d5ba61631f148b938aba.tres"]
+
+[params]
+
+defaults=true
