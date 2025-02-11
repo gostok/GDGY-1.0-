@@ -94,6 +94,7 @@ offset_bottom = 24.892
 text = "00:00.00"
 
 [node name="FpsScene" parent="." instance=ExtResource("5_mdfsn")]
+visible = false
 
 [connection signal="body_entered" from="flags_timer/f_s/Area2D_flagstart" to="." method="_on_area_2d_flagstart_body_entered"]
 [connection signal="body_entered" from="flags_timer/f_f/Area2D_flagfinish" to="." method="_on_area_2d_flagfinish_body_entered"]

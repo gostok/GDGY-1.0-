@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ci8trx1sym8te"]
+[gd_scene load_steps=19 format=3 uid="uid://ci8trx1sym8te"]
 
 [ext_resource type="Script" path="res://bike/scripts/biker.gd" id="1_1r8vo"]
 [ext_resource type="Texture2D" uid="uid://chh0jcflwekeo" path="res://bike/sprites/bike.png" id="2_70oqy"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bhxt4kceomvky" path="res://bike/scripts/bike_second/shin/shin.tscn" id="9_eonyv"]
 [ext_resource type="PackedScene" uid="uid://dx7dmeu4dhrqq" path="res://bike/scripts/bike_second/foot/foot.tscn" id="10_ysg34"]
 [ext_resource type="Script" path="res://bike/scripts/playerMovement.gd" id="11_yjsg1"]
+[ext_resource type="Texture2D" uid="uid://kgmbxp5vlqrj" path="res://assets/others/circle.png" id="13_qdd3h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6d270"]
 atlas = ExtResource("2_70oqy")
@@ -224,6 +225,12 @@ rotation_smoothing_enabled = true
 
 [node name="script_move" type="Node2D" parent="."]
 script = ExtResource("11_yjsg1")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1.62924, 0)
+scale = Vector2(0.036251, 0.036251)
+energy = 0.4
+texture = ExtResource("13_qdd3h")
 
 [connection signal="body_entered" from="wheels/WheelHolder_Back/wheel_back/Area2D_back" to="." method="_on_area_2d_back_body_entered"]
 [connection signal="body_exited" from="wheels/WheelHolder_Back/wheel_back/Area2D_back" to="." method="_on_area_2d_back_body_exited"]
