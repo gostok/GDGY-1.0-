@@ -20,6 +20,10 @@ config/windows_native_icon="res://ico.ico"
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
+[dialogue_manager]
+
+runtime/balloon_path="res://dialogue/d_ballon/balloon.tscn"
+
 [display]
 
 window/size/viewport_width=1280
