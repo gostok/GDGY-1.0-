@@ -3,6 +3,7 @@ extends Node2D
 class_name BaseScenes_line
 
 @onready var biker_player = $Biker
+var biker_gd = preload("res://bike/scripts/biker.gd").new()
 
 @onready var line2d = $StaticBody2D/Line2D  # Ваш узел Line2D
 @onready var upper_line2d = $UpperLine2D  # Новый узел Line2D для верхней трассы
@@ -24,11 +25,14 @@ var right_x = 1280 # X-координата для правой части ко�
 
 
 
+
+
 func _ready():
 	duplicate_line()
 	duplicate_collision()
 	duplicate_flags()
 	queue_redraw()
+	
 	
 	if timer_current == true:
 		set_process(true)
@@ -165,3 +169,15 @@ func _save_timer_track(timer_track: String):
 	get_tree().get_root().set_meta("timer_record", timer_track)
 	
 	get_tree().change_scene_to_file("res://all_scenes/menu_scenes/menu_completed_lvl/level_comleted/level_completed.tscn")
+
+
+func _start_d():
+
+	biker_player.set_dialog_active(true)
+	print("_start_d")
+
+func _restart_d():
+	get_tree().change_scene_to_file("res://all_scenes/menu_scenes/main_menu/main_menu.tscn")
+
+func _end_d():
+	biker_player.set_dialog_active(false)

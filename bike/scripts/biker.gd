@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 signal died
+signal dialogue_st
 
 enum State {
 	IDLE,
@@ -27,19 +28,32 @@ var is_on_ground_back = false  # Переменная для отслежива�
 var current_speed = 0.0  # Текущая скорость
 var is_in_air = false  # Переменная для отслеживания, в воздухе ли байкер
 
+var is_dialog_active = false  # Новый флаг для отслеживания состояния диалога
+
+
 
 
 func _ready() -> void:
 	add_child(movement)
+	add_to_group("player")
+	
 
+func _process(delta: float) -> void:
+	if is_dialog_active:
+		if is_on_ground_back:
+			wheel_back.angular_velocity = 0
+			self.linear_velocity = Vector2.ZERO
+		return
+	else:
+		handle_input(delta)
 
 
 func _physics_process(delta: float) -> void:
-
+	
 	handle_input(delta)
 	update_movement(delta)
-
-
+	
+	
 	if Input.is_action_pressed("run"):
 		if wheel_back.angular_velocity < max_speed:
 			wheel_back.apply_torque_impulse(speed * delta * 60)
@@ -49,13 +63,12 @@ func _physics_process(delta: float) -> void:
 		if is_on_ground_back:
 			wheel_back.angular_velocity = 0
 			self.linear_velocity = Vector2.ZERO
-
-
-
-
-
+	
 	if Input.is_action_pressed("reset"):
 		death_player()
+	
+
+
 
 
 func handle_input(delta: float):
@@ -140,3 +153,6 @@ func _on_area_2d_back_body_exited(body: Node2D) -> void:
 	if body is StaticBody2D:
 		is_on_ground_back = false
 		is_in_air = true
+		
+func set_dialog_active(active: bool):
+	is_dialog_active = active

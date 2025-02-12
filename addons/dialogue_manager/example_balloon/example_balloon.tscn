@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://73jm5qjy52vq"]
+[gd_scene load_steps=10 format=3 uid="uid://73jm5qjy52vq"]
 
-[ext_resource type="Script" uid="uid://d1wt4ma6055l8" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_36de5"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
-[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="FontFile" uid="uid://b7ndbl3humem5" path="res://assets/fonts/Retro Gaming.ttf" id="3_f4oca"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -119,6 +120,13 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
 
+[node name="Label" type="Label" parent="Balloon/Panel/Dialogue/VBoxContainer"]
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f4oca")
+theme_override_font_sizes/font_size = 12
+text = "press SPACE"
+
 [node name="Responses" type="MarginContainer" parent="Balloon"]
 layout_mode = 1
 anchors_preset = 7
@@ -126,10 +134,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -147.0
-offset_top = -558.0
-offset_right = 494.0
-offset_bottom = -154.0
+offset_left = 78.0
+offset_top = -324.0
+offset_right = 510.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 

@@ -63,6 +63,7 @@ var _method_info_cache: Dictionary = {}
 var _dotnet_dialogue_manager: RefCounted
 
 
+
 func _ready() -> void:
 	# Cache the known Node2D properties
 	_node_properties = ["Script Variables"]
@@ -74,6 +75,7 @@ func _ready() -> void:
 	# Make the dialogue manager available as a singleton
 	if not Engine.has_singleton("DialogueManager"):
 		Engine.register_singleton("DialogueManager", self)
+		
 
 
 ## Step through lines and run any mutations until we either hit some dialogue or the end of the conversation
@@ -415,10 +417,11 @@ func create_resource_from_text(text: String) -> Resource:
 ## Show the example balloon
 func show_example_dialogue_balloon(resource: DialogueResource, title: String = "", extra_game_states: Array = []) -> CanvasLayer:
 	var balloon: Node = load(_get_example_balloon_path()).instantiate()
+	
 	get_current_scene.call().add_child(balloon)
 	balloon.start(resource, title, extra_game_states)
 	dialogue_started.emit(resource)
-
+	print("Показать диалог: ", title)  # Вывод для проверки
 	return balloon
 
 

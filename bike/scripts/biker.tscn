@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ci8trx1sym8te"]
+[gd_scene load_steps=20 format=3 uid="uid://ci8trx1sym8te"]
 
 [ext_resource type="Script" path="res://bike/scripts/biker.gd" id="1_1r8vo"]
 [ext_resource type="Texture2D" uid="uid://chh0jcflwekeo" path="res://bike/sprites/bike.png" id="2_70oqy"]
@@ -32,7 +32,12 @@ height = 20.7827
 radius = 2.92246
 height = 17.9942
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hi4b"]
+size = Vector2(12.128, 7.31821)
+
 [node name="Biker" type="RigidBody2D"]
+collision_layer = 129
+collision_mask = 129
 mass = 12.0
 script = ExtResource("1_1r8vo")
 
@@ -231,6 +236,16 @@ position = Vector2(1.62924, 0)
 scale = Vector2(0.036251, 0.036251)
 energy = 0.4
 texture = ExtResource("13_qdd3h")
+
+[node name="area_dialogue" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="area_dialogue" groups=["player"]]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_dialogue/Area2D"]
+position = Vector2(1.17055, -0.0468216)
+shape = SubResource("RectangleShape2D_3hi4b")
 
 [connection signal="body_entered" from="wheels/WheelHolder_Back/wheel_back/Area2D_back" to="." method="_on_area_2d_back_body_entered"]
 [connection signal="body_exited" from="wheels/WheelHolder_Back/wheel_back/Area2D_back" to="." method="_on_area_2d_back_body_exited"]

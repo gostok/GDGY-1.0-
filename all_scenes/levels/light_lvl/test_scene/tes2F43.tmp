@@ -1,14 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://duyjqxp4t2gpt"]
+[gd_scene load_steps=11 format=3 uid="uid://duyjqxp4t2gpt"]
 
 [ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="1_sxux5"]
 [ext_resource type="Script" path="res://all_scenes/levels/light_lvl/test_scene/test_scene.gd" id="1_xh2or"]
+[ext_resource type="Resource" uid="uid://ww0ymtvaxdtj" path="res://dialogue/vice_dialogue.dialogue" id="2_6nrp2"]
 [ext_resource type="PackedScene" uid="uid://bh7od2advoqe4" path="res://all_scenes/levels/bg_levels/bg_vice/bg_vice.tscn" id="2_rwtey"]
 [ext_resource type="PackedScene" uid="uid://x84spmq16m7y" path="res://all_scenes/objects_scenes/flags_scenes/flag_finish/flag_finish.tscn" id="3_kclrc"]
 [ext_resource type="PackedScene" uid="uid://cd188ngfrnj0l" path="res://all_scenes/objects_scenes/flags_scenes/flag_start/flag_start.tscn" id="3_xnl3g"]
 [ext_resource type="PackedScene" uid="uid://qrqrxxtwa04n" path="res://all_scenes/objects_scenes/fps_sc/fps_scene.tscn" id="5_mdfsn"]
-[ext_resource type="Script" path="res://dialogue/d_scripts/area_d_scripts/d_vice.gd" id="6_dpi17"]
-[ext_resource type="Script" path="res://dialogue/d_scripts/dialogues.gd" id="6_rgnee"]
-[ext_resource type="Resource" uid="uid://ww0ymtvaxdtj" path="res://dialogue/vice_dialogue.dialogue" id="7_u4bu8"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="7_ahvhl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23xam"]
 size = Vector2(10.4647, 222.138)
@@ -16,12 +15,17 @@ size = Vector2(10.4647, 222.138)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jji45"]
 size = Vector2(10.465, 222.138)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdkes"]
-size = Vector2(40.405, 41.4979)
-
 [node name="Test_scene" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_xh2or")
+Dialogue_level = ExtResource("2_6nrp2")
+
+[node name="lights" type="Node2D" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="lights"]
+energy = 0.2
+blend_mode = 1
+range_layer_min = -1
 
 [node name="BgVice" parent="." instance=ExtResource("2_rwtey")]
 z_index = -1
@@ -48,7 +52,7 @@ build_mode = 1
 width = 1.0
 default_color = Color(0, 1, 0.501961, 1)
 
-[node name="Biker" parent="." groups=["player"] instance=ExtResource("1_sxux5")]
+[node name="Biker" parent="." instance=ExtResource("1_sxux5")]
 position = Vector2(213.627, 385.105)
 collision_layer = 8
 
@@ -81,26 +85,6 @@ shape = SubResource("RectangleShape2D_jji45")
 
 [node name="other" type="Node2D" parent="."]
 
-[node name="dialogues" type="Node2D" parent="other"]
-script = ExtResource("6_rgnee")
-
-[node name="d_vice" type="Area2D" parent="other/dialogues"]
-collision_layer = 129
-collision_mask = 129
-script = ExtResource("6_dpi17")
-dialogue_resource = ExtResource("7_u4bu8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="other/dialogues/d_vice"]
-position = Vector2(214.936, 417.629)
-shape = SubResource("RectangleShape2D_wdkes")
-
-[node name="lights" type="Node2D" parent="other"]
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="other/lights"]
-energy = 0.2
-blend_mode = 1
-range_layer_min = -1
-
 [node name="timer_track" type="Node2D" parent="other"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="other/timer_track"]
@@ -115,8 +99,13 @@ text = "00:00.00"
 [node name="FpsScene" parent="." instance=ExtResource("5_mdfsn")]
 visible = false
 
+[node name="DialogueLabel" type="RichTextLabel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_ahvhl")
+skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
+
 [connection signal="body_entered" from="flags_timer/f_s/Area2D_flagstart" to="." method="_on_area_2d_flagstart_body_entered"]
 [connection signal="body_entered" from="flags_timer/f_f/Area2D_flagfinish" to="." method="_on_area_2d_flagfinish_body_entered"]
-[connection signal="body_entered" from="other/dialogues/d_vice" to="other/dialogues/d_vice" method="_on_body_entered"]
 
 [editable path="BgVice"]
