@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://s5lek6oggoq"
+path="res://.godot/imported/abyss_dialogue.dialogue-d27f55f4331572af45b71882b466453b.tres"
+
+[deps]
+
+source_file="res://dialogue/abyss_dialogue.dialogue"
+dest_files=["res://.godot/imported/abyss_dialogue.dialogue-d27f55f4331572af45b71882b466453b.tres"]
+
+[params]
+
+defaults=true

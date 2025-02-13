@@ -3,7 +3,7 @@ extends Node2D
 class_name BaseScenes_line
 
 @onready var biker_player = $Biker
-var biker_gd = preload("res://bike/scripts/biker.gd").new()
+
 
 @onready var line2d = $StaticBody2D/Line2D  # Ваш узел Line2D
 @onready var upper_line2d = $UpperLine2D  # Новый узел Line2D для верхней трассы
@@ -11,6 +11,9 @@ var biker_gd = preload("res://bike/scripts/biker.gd").new()
 @onready var statbod = $StaticBody2D
 @onready var flag_start = $flags_timer/f_s/flag_start
 @onready var flag_finish = $flags_timer/f_f/flag_finish
+
+@onready var name_level: Label = $other/name_level/CanvasLayer/Label
+@onready var name_level_animation: AnimationPlayer = $other/name_level/CanvasLayer/AnimationPlayer
 
 
 var timer = 0
@@ -38,6 +41,9 @@ func _ready():
 		set_process(true)
 	else:
 		set_process(false)
+	
+
+
 
 
 func start_timer():
@@ -153,6 +159,8 @@ func _on_area_2d_flagstart_body_entered(body):
 	if body.is_in_group("player"):
 		print("start")
 		start_timer()
+		name_level_text()
+
 
 
 func _on_area_2d_flagfinish_body_entered(body):
@@ -172,12 +180,18 @@ func _save_timer_track(timer_track: String):
 
 
 func _start_d():
-
 	biker_player.set_dialog_active(true)
-	print("_start_d")
+
 
 func _restart_d():
 	get_tree().change_scene_to_file("res://all_scenes/menu_scenes/main_menu/main_menu.tscn")
 
+
 func _end_d():
 	biker_player.set_dialog_active(false)
+
+
+func name_level_text():
+	name_level_animation.play("name_level_anim")
+	await get_tree().create_timer(3).timeout
+	name_level_animation.play("name_level_anim_end")

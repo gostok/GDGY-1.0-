@@ -116,6 +116,11 @@ func update_movement(delta: float):
 
 func death_player():
 	is_alive = false
+	
+	# Увеличиваем количество смертей в глобальном скрипте
+	var global_biker = get_tree().get_root().get_node("/root/GlobalBiker")
+	global_biker.increment_death_count()
+	
 	emit_signal("died")
 	call_deferred("queue_free")
 	call_deferred("_change_scene")

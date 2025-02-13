@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://duyjqxp4t2gpt"]
+[gd_scene load_steps=18 format=3 uid="uid://duyjqxp4t2gpt"]
 
 [ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="1_sxux5"]
 [ext_resource type="Script" path="res://all_scenes/levels/light_lvl/test_scene/test_scene.gd" id="1_xh2or"]
@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cd188ngfrnj0l" path="res://all_scenes/objects_scenes/flags_scenes/flag_start/flag_start.tscn" id="3_xnl3g"]
 [ext_resource type="PackedScene" uid="uid://qrqrxxtwa04n" path="res://all_scenes/objects_scenes/fps_sc/fps_scene.tscn" id="5_mdfsn"]
 [ext_resource type="Script" path="res://dialogue/d_scripts/area_d_scripts/d_vice.gd" id="6_dpi17"]
-[ext_resource type="Script" path="res://dialogue/d_scripts/dialogues.gd" id="6_rgnee"]
 [ext_resource type="Resource" uid="uid://ww0ymtvaxdtj" path="res://dialogue/vice_dialogue.dialogue" id="7_u4bu8"]
+[ext_resource type="FontFile" uid="uid://c5hk3tftdjq3g" path="res://assets/fonts/Outrun future Bold.otf" id="8_53m1j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23xam"]
 size = Vector2(10.4647, 222.138)
@@ -18,6 +18,64 @@ size = Vector2(10.465, 222.138)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdkes"]
 size = Vector2(40.405, 41.4979)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hf8uv"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Animation" id="Animation_bxleb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.898039, 0.0823529, 0.74902, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l5a5f"]
+resource_name = "name_level_anim"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.898039, 0.0823529, 0.74902, 0), Color(0.898039, 0.0823529, 0.74902, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_35qxj"]
+resource_name = "name_level_anim_end"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.898039, 0.0823529, 0.74902, 1), Color(0.898039, 0.0823529, 0.74902, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_whq52"]
+_data = {
+"RESET": SubResource("Animation_bxleb"),
+"name_level_anim": SubResource("Animation_l5a5f"),
+"name_level_anim_end": SubResource("Animation_35qxj")
+}
 
 [node name="Test_scene" type="Node2D"]
 texture_filter = 1
@@ -82,7 +140,6 @@ shape = SubResource("RectangleShape2D_jji45")
 [node name="other" type="Node2D" parent="."]
 
 [node name="dialogues" type="Node2D" parent="other"]
-script = ExtResource("6_rgnee")
 
 [node name="d_vice" type="Area2D" parent="other/dialogues"]
 collision_layer = 129
@@ -111,6 +168,32 @@ offset_top = 1.89202
 offset_right = 66.1022
 offset_bottom = 24.892
 text = "00:00.00"
+
+[node name="name_level" type="Node2D" parent="other"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="other/name_level"]
+
+[node name="Label" type="Label" parent="other/name_level/CanvasLayer"]
+modulate = Color(0.898039, 0.0823529, 0.74902, 0)
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
+material = SubResource("CanvasItemMaterial_hf8uv")
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_top = 72.0
+offset_right = 25.0
+offset_bottom = 93.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("8_53m1j")
+theme_override_font_sizes/font_size = 40
+text = "Level   ' Vice '"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="other/name_level/CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_whq52")
+}
 
 [node name="FpsScene" parent="." instance=ExtResource("5_mdfsn")]
 visible = false

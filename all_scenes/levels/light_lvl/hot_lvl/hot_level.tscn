@@ -1,15 +1,74 @@
-[gd_scene load_steps=7 format=3 uid="uid://dctsuqdwcbwtp"]
+[gd_scene load_steps=13 format=3 uid="uid://dctsuqdwcbwtp"]
 
 [ext_resource type="Script" path="res://all_scenes/levels/light_lvl/hot_lvl/hot_level.gd" id="1_8ni4v"]
 [ext_resource type="PackedScene" uid="uid://cd188ngfrnj0l" path="res://all_scenes/objects_scenes/flags_scenes/flag_start/flag_start.tscn" id="2_2w8nb"]
 [ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="2_sagni"]
 [ext_resource type="PackedScene" uid="uid://x84spmq16m7y" path="res://all_scenes/objects_scenes/flags_scenes/flag_finish/flag_finish.tscn" id="3_lqmtk"]
+[ext_resource type="FontFile" uid="uid://c5hk3tftdjq3g" path="res://assets/fonts/Outrun future Bold.otf" id="5_7l3ge"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j562q"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yl1gr"]
 size = Vector2(10.4647, 222.138)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h8qpd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y23ex"]
 size = Vector2(10.465, 222.138)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uvai5"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Animation" id="Animation_bxleb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.898039, 0.0823529, 0.74902, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l5a5f"]
+resource_name = "name_level_anim"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.898039, 0.0823529, 0.74902, 0), Color(0.898039, 0.0823529, 0.74902, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_35qxj"]
+resource_name = "name_level_anim_end"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.898039, 0.0823529, 0.74902, 1), Color(0.898039, 0.0823529, 0.74902, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_whq52"]
+_data = {
+"RESET": SubResource("Animation_bxleb"),
+"name_level_anim": SubResource("Animation_l5a5f"),
+"name_level_anim_end": SubResource("Animation_35qxj")
+}
 
 [node name="hot_level" type="Node2D"]
 script = ExtResource("1_8ni4v")
@@ -34,20 +93,75 @@ position = Vector2(147.119, 558.064)
 
 [node name="flags_timer" type="Node2D" parent="."]
 
-[node name="flag_start" parent="flags_timer" instance=ExtResource("2_2w8nb")]
-position = Vector2(226.146, 572.006)
+[node name="f_s" type="Node2D" parent="flags_timer"]
 
-[node name="Area2D_flagstart" type="Area2D" parent="flags_timer/flag_start"]
+[node name="flag_start" parent="flags_timer/f_s" instance=ExtResource("2_2w8nb")]
+position = Vector2(245.145, 569.074)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/flag_start/Area2D_flagstart"]
+[node name="Area2D_flagstart" type="Area2D" parent="flags_timer/f_s"]
+position = Vector2(245.145, 569.074)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/f_s/Area2D_flagstart"]
 position = Vector2(-3.26932, -100.133)
-shape = SubResource("RectangleShape2D_j562q")
+shape = SubResource("RectangleShape2D_yl1gr")
 
-[node name="flag_finish" parent="flags_timer" instance=ExtResource("3_lqmtk")]
-position = Vector2(1139.68, 618.385)
+[node name="f_f" type="Node2D" parent="flags_timer"]
+position = Vector2(6.66727, 0.419983)
 
-[node name="Area2D_flagfinish" type="Area2D" parent="flags_timer/flag_finish"]
+[node name="flag_finish" parent="flags_timer/f_f" instance=ExtResource("3_lqmtk")]
+position = Vector2(1160.95, 622.318)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/flag_finish/Area2D_flagfinish"]
+[node name="Area2D_flagfinish" type="Area2D" parent="flags_timer/f_f"]
+position = Vector2(1160.95, 622.318)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/f_f/Area2D_flagfinish"]
 position = Vector2(-3.10596, -99.7005)
-shape = SubResource("RectangleShape2D_h8qpd")
+shape = SubResource("RectangleShape2D_y23ex")
+
+[node name="other" type="Node2D" parent="."]
+
+[node name="dialogues" type="Node2D" parent="other"]
+
+[node name="lights" type="Node2D" parent="other"]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="other/lights"]
+energy = 0.2
+blend_mode = 1
+range_layer_min = -1
+
+[node name="timer_track" type="Node2D" parent="other"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="other/timer_track"]
+
+[node name="Label" type="Label" parent="other/timer_track/CanvasLayer"]
+offset_left = 2.10224
+offset_top = 1.89202
+offset_right = 66.1022
+offset_bottom = 24.892
+text = "00:00.00"
+
+[node name="name_level" type="Node2D" parent="other"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="other/name_level"]
+
+[node name="Label" type="Label" parent="other/name_level/CanvasLayer"]
+modulate = Color(0.898039, 0.0823529, 0.74902, 0)
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
+material = SubResource("CanvasItemMaterial_uvai5")
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_top = 72.0
+offset_right = 25.0
+offset_bottom = 93.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_7l3ge")
+theme_override_font_sizes/font_size = 40
+text = "Level   ' Abyss '"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="other/name_level/CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_whq52")
+}
