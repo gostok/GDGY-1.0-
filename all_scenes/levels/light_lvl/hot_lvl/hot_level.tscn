@@ -180,4 +180,7 @@ libraries = {
 "": SubResource("AnimationLibrary_whq52")
 }
 
+[connection signal="body_entered" from="flags_timer/f_s/Area2D_flagstart" to="." method="_on_area_2d_flagstart_body_entered"]
+[connection signal="body_entered" from="flags_timer/f_f/Area2D_flagfinish" to="." method="_on_area_2d_flagfinish_body_entered"]
+
 [editable path="BgAbyss"]

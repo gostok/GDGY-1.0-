@@ -5,6 +5,7 @@
 
 [node name="StarLevelLights" type="PointLight2D"]
 energy = 1.5
+range_z_max = 3
 range_layer_min = -2
 range_layer_max = 2
 texture = ExtResource("1_x3coj")

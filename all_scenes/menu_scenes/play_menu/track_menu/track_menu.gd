@@ -41,8 +41,8 @@ func _on_test_track_pressed() -> void:
 
 
 func _on_hot_pressed() -> void:
-	_save_selected_track("Hot")
+	_save_selected_track("Abyss")
 
 
 func _on_council_pyramid_pressed() -> void:
-	_save_selected_track("Council_Pyramid")
+	_save_selected_track("Chasm")

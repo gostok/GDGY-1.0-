@@ -32,7 +32,7 @@ func _on_start_bt_pressed() -> void:
 		match  selected_track:
 			"01":
 				get_tree().change_scene_to_file("res://all_scenes/levels/light_lvl/test_scene/test_scene.tscn")
-			"Hot":
+			"Abyss":
 				get_tree().change_scene_to_file("res://all_scenes/levels/light_lvl/hot_lvl/hot_level.tscn")
-			"Council_Pyramid":
-				get_tree().change_scene_to_file("res://all_scenes/levels/light_lvl/council_pyramid/council_pyramid.tscn")
+			"Chasm":
+				get_tree().change_scene_to_file("res://all_scenes/levels/light_lvl/chasm_lvl/chasm_level.tscn")

@@ -1,0 +1,197 @@
+[gd_scene load_steps=16 format=3 uid="uid://gujn3v3l1u5s"]
+
+[ext_resource type="Script" path="res://all_scenes/levels/light_lvl/chasm_lvl/chasm_level.gd" id="1_bmnii"]
+[ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="1_yxmey"]
+[ext_resource type="PackedScene" uid="uid://cd188ngfrnj0l" path="res://all_scenes/objects_scenes/flags_scenes/flag_start/flag_start.tscn" id="2_hta8x"]
+[ext_resource type="PackedScene" uid="uid://tjt5wevw1w40" path="res://all_scenes/levels/bg_levels/bg_chasm/bg_chasm.tscn" id="2_vg6v0"]
+[ext_resource type="PackedScene" uid="uid://x84spmq16m7y" path="res://all_scenes/objects_scenes/flags_scenes/flag_finish/flag_finish.tscn" id="3_4wir2"]
+[ext_resource type="Texture2D" uid="uid://kgmbxp5vlqrj" path="res://assets/others/circle.png" id="3_e3w6p"]
+[ext_resource type="FontFile" uid="uid://c5hk3tftdjq3g" path="res://assets/fonts/Outrun future Bold.otf" id="4_dye8q"]
+[ext_resource type="PackedScene" uid="uid://qrqrxxtwa04n" path="res://all_scenes/objects_scenes/fps_sc/fps_scene.tscn" id="5_b1sa2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvpce"]
+size = Vector2(10.4647, 222.138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0a7bl"]
+size = Vector2(10.465, 222.138)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q6rn6"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Animation" id="Animation_bxleb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.898039, 0.0823529, 0.74902, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l5a5f"]
+resource_name = "name_level_anim"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.898039, 0.0823529, 0.74902, 0), Color(0.898039, 0.0823529, 0.74902, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_35qxj"]
+resource_name = "name_level_anim_end"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.898039, 0.0823529, 0.74902, 1), Color(0.898039, 0.0823529, 0.74902, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_whq52"]
+_data = {
+"RESET": SubResource("Animation_bxleb"),
+"name_level_anim": SubResource("Animation_l5a5f"),
+"name_level_anim_end": SubResource("Animation_35qxj")
+}
+
+[node name="ChasmLevel" type="Node2D"]
+script = ExtResource("1_bmnii")
+
+[node name="BgChasm" parent="." instance=ExtResource("2_vg6v0")]
+
+[node name="ParallaxBackground" parent="BgChasm" index="0"]
+scale = Vector2(0.45, 0.45)
+transform = Transform2D(0.45, 0, 0, 0.45, 0, 0)
+
+[node name="ParallaxLayer2" parent="BgChasm/ParallaxBackground" index="1"]
+position = Vector2(256, 56.8888)
+
+[node name="PointLight2D" type="PointLight2D" parent="BgChasm/ParallaxBackground/ParallaxLayer2/Sprite2D" index="0"]
+position = Vector2(640, 305.301)
+scale = Vector2(1.65752, 1.47453)
+range_z_max = 9
+range_layer_min = -2
+range_layer_max = 5
+texture = ExtResource("3_e3w6p")
+
+[node name="ParallaxLayer3" parent="BgChasm/ParallaxBackground" index="2"]
+position = Vector2(0, 106.667)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 11
+
+[node name="Line2D" type="Line2D" parent="StaticBody2D"]
+points = PackedVector2Array(4.84103, 6.38206, 6.94328, 93.2046, 13.8807, 99.5113, 51.55, 97.7828, 66.8287, 98.7749, 79.1311, 117.625, 82.0062, 153.046, 83.788, 185.341, 86.0152, 210.509, 88.0197, 234.341, 106.506, 251.268, 125.363, 268.455, 140.509, 283.155, 156.545, 297.409, 169.463, 309.436, 179.263, 318.568, 192.144, 316.786, 211.966, 315.004, 231.343, 312.554, 252.056, 309.659, 269.652, 307.432, 283.535, 296.964, 295.785, 288.946, 305.585, 280.482, 319.393, 271.128, 334.093, 262.219, 350.352, 253.087, 358.148, 247.742, 366.166, 246.851, 371.956, 246.628, 383.538, 236.16, 392.447, 232.151, 403.286, 245.292, 414.423, 261.105, 427.786, 278.032, 439.145, 292.955, 451.84, 308.323, 457.891, 331.152, 463.905, 352.534, 470.141, 374.138, 475.375, 393.218, 480.72, 411.704, 485.62, 426.404, 501.099, 438.357, 518.026, 452.166, 532.281, 464.638, 546.981, 476.443, 558.006, 478.299, 560.01, 488.544, 574.042, 499.458, 588.742, 512.376, 602.402, 523.252, 619.552, 539.065, 636.033, 552.874, 650.51, 565.57, 666.547, 578.933, 679.353, 594.709, 690.935, 609.855, 703.408, 625.668, 714.989, 629.232, 715.658, 641.927, 729.207, 658.557, 742.57, 676.375, 757.27, 695.975, 781.324, 696.643, 804.933, 697.757, 825.869, 698.425, 843.019, 699.761, 861.728, 696.866, 883.109, 692.189, 903.154, 688.625, 921.975, 683.502, 940.721, 671.698, 960.766, 663.234, 977.247, 651.207, 999.297, 644.303, 1014.44, 632.944, 1030.03, 624.035, 1046.07, 614.458, 1061.66, 602.208, 1071.21, 623.273, 1074.12, 647.905, 1083.39, 669.359, 1089.49, 647.641, 1092.66, 669.359, 1095.84, 690.814, 1099.29, 663.797, 1100.88, 646.846, 1109.35, 662.738, 1122.06, 652.143, 1140.34, 649.495, 1159.94, 649.23, 1180, 641, 1184.25, 622.25, 1189.75, 598.75, 1193.5, 638.75, 1198, 665.5, 1203.25, 695, 1207, 634, 1213.5, 599.5, 1219.49, 564.125, 1230.63, 550.04, 1245.11, 571.479, 1264.44, 572.668, 1276.93, 545.911)
+width = 1.0
+default_color = Color(0, 1, 0.501961, 1)
+
+[node name="collision" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+
+[node name="UpperLine2D" type="Line2D" parent="."]
+width = 1.0
+default_color = Color(0, 1, 0.501961, 1)
+
+[node name="Biker" parent="." groups=["player"] instance=ExtResource("1_yxmey")]
+position = Vector2(31.9999, 82.822)
+collision_layer = 8
+
+[node name="flags_timer" type="Node2D" parent="."]
+
+[node name="f_s" type="Node2D" parent="flags_timer"]
+
+[node name="flag_start" parent="flags_timer/f_s" instance=ExtResource("2_hta8x")]
+position = Vector2(64.0592, 87.2994)
+
+[node name="Area2D_flagstart" type="Area2D" parent="flags_timer/f_s"]
+position = Vector2(64.0592, 87.2994)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/f_s/Area2D_flagstart"]
+position = Vector2(-3.26932, -100.133)
+shape = SubResource("RectangleShape2D_nvpce")
+
+[node name="f_f" type="Node2D" parent="flags_timer"]
+position = Vector2(6.66727, 0.419983)
+
+[node name="flag_finish" parent="flags_timer/f_f" instance=ExtResource("3_4wir2")]
+position = Vector2(1150.14, 638.221)
+
+[node name="Area2D_flagfinish" type="Area2D" parent="flags_timer/f_f"]
+position = Vector2(1150.14, 638.221)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/f_f/Area2D_flagfinish"]
+position = Vector2(-3.10596, -99.7005)
+shape = SubResource("RectangleShape2D_0a7bl")
+
+[node name="other" type="Node2D" parent="."]
+
+[node name="lights" type="Node2D" parent="other"]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="other/lights"]
+energy = 0.2
+blend_mode = 1
+range_layer_min = -1
+
+[node name="timer_track" type="Node2D" parent="other"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="other/timer_track"]
+
+[node name="Label" type="Label" parent="other/timer_track/CanvasLayer"]
+offset_left = 2.10224
+offset_top = 1.89202
+offset_right = 66.1022
+offset_bottom = 24.892
+text = "00:00.00"
+
+[node name="name_level" type="Node2D" parent="other"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="other/name_level"]
+
+[node name="Label" type="Label" parent="other/name_level/CanvasLayer"]
+modulate = Color(0.898039, 0.0823529, 0.74902, 0)
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
+material = SubResource("CanvasItemMaterial_q6rn6")
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_top = 72.0
+offset_right = 25.0
+offset_bottom = 93.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_dye8q")
+theme_override_font_sizes/font_size = 40
+text = "Level   ' Chasm '"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="other/name_level/CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_whq52")
+}
+
+[node name="FpsScene" parent="." instance=ExtResource("5_b1sa2")]
+visible = false
+
+[connection signal="body_entered" from="flags_timer/f_s/Area2D_flagstart" to="." method="_on_area_2d_flagstart_body_entered"]
+[connection signal="body_entered" from="flags_timer/f_f/Area2D_flagfinish" to="." method="_on_area_2d_flagfinish_body_entered"]
+
+[editable path="BgChasm"]

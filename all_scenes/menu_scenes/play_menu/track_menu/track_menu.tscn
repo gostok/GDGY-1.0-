@@ -99,7 +99,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ec6h1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3obny")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_okwy2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2j7ej")
-text = "Hot"
+text = "Abyss"
 
 [node name="Lantern" parent="mc_light/VBoxContainer/Hot" instance=ExtResource("4_uo8f7")]
 position = Vector2(150, 11)
@@ -112,7 +112,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_4be02")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jrdxk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ronhf")
 theme_override_styles/normal = SubResource("StyleBoxFlat_6v331")
-text = "Council Pyramid"
+text = "Chasm"
 
 [node name="Lantern" parent="mc_light/VBoxContainer/Council_Pyramid" instance=ExtResource("4_uo8f7")]
 position = Vector2(150, 11)
