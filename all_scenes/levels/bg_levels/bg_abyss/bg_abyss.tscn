@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://baqlm3pjl48r5"]
+
+[ext_resource type="Texture2D" uid="uid://0imw14kgoie7" path="res://all_scenes/levels/bg_levels/bg_abyss/Retro BG 2 a.png" id="1_5prhk"]
+[ext_resource type="Texture2D" uid="uid://b7a33rfbysplj" path="res://all_scenes/levels/bg_levels/bg_abyss/Retro BG 2 b.png" id="2_ec0ek"]
+[ext_resource type="Texture2D" uid="uid://b13ctfhbtemvn" path="res://all_scenes/levels/bg_levels/bg_abyss/Retro BG 2 c.png" id="3_hpyt4"]
+[ext_resource type="PackedScene" uid="uid://w5jywiycfqhg" path="res://all_scenes/objects_scenes/light_sc/star_level_lights.tscn" id="4_r3cry"]
+
+[node name="BgAbyss" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_5prhk")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(256, 128)
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ec0ek")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.75, 0.75)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("3_hpyt4")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+
+[node name="StarLevelLights" parent="ParallaxBackground/ParallaxLayer4" instance=ExtResource("4_r3cry")]
+position = Vector2(45.9082, 25.8782)
+
+[node name="StarLevelLights2" parent="ParallaxBackground/ParallaxLayer4" instance=ExtResource("4_r3cry")]
+position = Vector2(49.8368, 226.238)
+
+[node name="StarLevelLights3" parent="ParallaxBackground/ParallaxLayer4" instance=ExtResource("4_r3cry")]
+position = Vector2(338.162, 338.197)
+
+[node name="StarLevelLights4" parent="ParallaxBackground/ParallaxLayer4" instance=ExtResource("4_r3cry")]
+position = Vector2(346.016, 26.0757)
+
+[node name="StarLevelLights5" parent="ParallaxBackground/ParallaxLayer4" instance=ExtResource("4_r3cry")]
+position = Vector2(545.729, 69.8023)
+
+[node name="StarLevelLights6" parent="ParallaxBackground/ParallaxLayer4" instance=ExtResource("4_r3cry")]
+position = Vector2(934.16, 130.383)
+
+[node name="StarLevelLights7" parent="ParallaxBackground/ParallaxLayer4" instance=ExtResource("4_r3cry")]
+position = Vector2(937.728, 330.17)
+
+[node name="StarLevelLights8" parent="ParallaxBackground/ParallaxLayer4" instance=ExtResource("4_r3cry")]
+position = Vector2(1058.12, 229.938)
+
+[node name="StarLevelLights9" parent="ParallaxBackground/ParallaxLayer4" instance=ExtResource("4_r3cry")]
+position = Vector2(1233.99, 129.289)
+
+[node name="StarLevelLights10" parent="ParallaxBackground/ParallaxLayer4" instance=ExtResource("4_r3cry")]
+position = Vector2(1238.23, 330.587)
