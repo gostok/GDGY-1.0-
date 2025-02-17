@@ -1,0 +1,197 @@
+[gd_scene load_steps=16 format=3 uid="uid://dwveceh7t4hnk"]
+
+[ext_resource type="Script" path="res://all_scenes/levels/medium_lvl/neon_streets_lvl/neon_streets_level.gd" id="1_ca5id"]
+[ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="1_roue2"]
+[ext_resource type="PackedScene" uid="uid://cd188ngfrnj0l" path="res://all_scenes/objects_scenes/flags_scenes/flag_start/flag_start.tscn" id="2_2luas"]
+[ext_resource type="Texture2D" uid="uid://kgmbxp5vlqrj" path="res://assets/others/circle.png" id="3_dxhdt"]
+[ext_resource type="PackedScene" uid="uid://x84spmq16m7y" path="res://all_scenes/objects_scenes/flags_scenes/flag_finish/flag_finish.tscn" id="3_hrqfr"]
+[ext_resource type="FontFile" uid="uid://c5hk3tftdjq3g" path="res://assets/fonts/Outrun future Bold.otf" id="4_srkxl"]
+[ext_resource type="PackedScene" uid="uid://qrqrxxtwa04n" path="res://all_scenes/objects_scenes/fps_sc/fps_scene.tscn" id="5_ne33r"]
+[ext_resource type="PackedScene" uid="uid://y8eygw8sfav5" path="res://all_scenes/levels/bg_levels/bg_neon_streets/bg_neon_streets.tscn" id="6_bnx6f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysigv"]
+size = Vector2(10.4647, 222.138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtisn"]
+size = Vector2(10.465, 222.138)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wltjj"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Animation" id="Animation_bxleb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.898039, 0.0823529, 0.74902, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l5a5f"]
+resource_name = "name_level_anim"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.898039, 0.0823529, 0.74902, 0), Color(0.898039, 0.0823529, 0.74902, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_35qxj"]
+resource_name = "name_level_anim_end"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.898039, 0.0823529, 0.74902, 1), Color(0.898039, 0.0823529, 0.74902, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_whq52"]
+_data = {
+"RESET": SubResource("Animation_bxleb"),
+"name_level_anim": SubResource("Animation_l5a5f"),
+"name_level_anim_end": SubResource("Animation_35qxj")
+}
+
+[node name="NeonStreetsLevel" type="Node2D"]
+script = ExtResource("1_ca5id")
+
+[node name="BgNeonStreets" parent="." instance=ExtResource("6_bnx6f")]
+
+[node name="ParallaxBackground" parent="BgNeonStreets" index="0"]
+layer = -1
+scale = Vector2(0.4, 0.4)
+transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
+
+[node name="ParallaxLayer" parent="BgNeonStreets/ParallaxBackground" index="0"]
+position = Vector2(0, 20)
+
+[node name="ParallaxLayer2" parent="BgNeonStreets/ParallaxBackground" index="1"]
+position = Vector2(0, 20)
+
+[node name="PointLight2D" type="PointLight2D" parent="BgNeonStreets/ParallaxBackground/ParallaxLayer2" index="0"]
+position = Vector2(626.317, 167.5)
+color = Color(0.713726, 0.290196, 0.729412, 1)
+range_z_max = 9
+range_layer_min = -2
+texture = ExtResource("3_dxhdt")
+
+[node name="ParallaxLayer3" parent="BgNeonStreets/ParallaxBackground" index="2"]
+position = Vector2(0, 20)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 11
+
+[node name="Line2D" type="Line2D" parent="StaticBody2D"]
+points = PackedVector2Array(5.07349, 534.134, 10.2325, 521.633, 13.8042, 510.124, 18.368, 495.242, 22.9317, 483.138, 24.6996, 474.823, 25.8901, 415.097, 26.6838, 351.005, 34.6208, 339.695, 42.161, 326.599, 46.7248, 319.059, 48.1137, 255.959, 49.5027, 192.265, 53.0744, 203.774, 56.0508, 212.901, 58.6303, 222.029, 61.2098, 230.363, 63.9878, 239.292, 67.5594, 252.189, 68.9484, 286.319, 70.5358, 332.155, 73.1153, 347.235, 79.2658, 351.568, 86.9827, 354.655, 92.7353, 357.461, 98.067, 359.145, 105.924, 361.811, 112.94, 365.318, 119.815, 367.704, 126.549, 370.79, 134.547, 373.877, 141.983, 376.122, 150.823, 378.227, 158.68, 380.191, 165.649, 381.454, 175.47, 382.155, 183.187, 382.716, 189.08, 383.558, 194.271, 383.558, 205.075, 382.576, 215.318, 381.594, 226.402, 380.752, 238.889, 379.77, 249.974, 378.788, 258.252, 376.683, 267.161, 373.176, 276.001, 368.826, 284.84, 366.02, 292.276, 361.39, 301.396, 355.497, 307.149, 350.305, 311.919, 345.675, 313.299, 408.697, 314.888, 508.001, 317.186, 555.024, 319.484, 567.221, 329.03, 567.398, 340.52, 567.575, 351.834, 567.575, 358.021, 567.221, 360.248, 520.427, 362.232, 473.996, 372.154, 472.011, 380.289, 471.019, 382.472, 441.454, 384.456, 412.88, 391.401, 413.873, 398.743, 416.849, 404.894, 420.421, 410.648, 424.389, 414.021, 427.564, 426.782, 427.562, 438.128, 427.729, 450.809, 427.395, 460.487, 426.728, 469.83, 425.226, 478.34, 422.389, 483.513, 420.053, 487.517, 417.384, 489.16, 443.711, 490.996, 471.242, 498.504, 469.407, 507.514, 468.072, 515.357, 464.234, 516.858, 519.463, 519.528, 572.189, 526.369, 572.523, 533.711, 572.189, 539.217, 572.356, 545.224, 572.356, 548.895, 572.022, 550.73, 523.301, 552.232, 473.244, 554.178, 477.916, 558.85, 480.252, 564.523, 482.588, 571.865, 486.092, 578.206, 488.428, 585.881, 491.431, 592.889, 494.602, 598.896, 497.605, 603.568, 499.607, 615.581, 502.944, 627.261, 506.448, 639.942, 510.453, 653.457, 514.624, 663.969, 516.96, 673.814, 517.961, 681.823, 519.964, 692.835, 522.133, 704.181, 523.301, 712.357, 518.629, 715.861, 525.303, 717.863, 552, 719.699, 580.031, 723.203, 580.031, 724.538, 545.492, 731.932, 499.418, 742.635, 508.04, 750.373, 513.623, 763.888, 513.289, 777.737, 513.456, 790.918, 513.289, 802.265, 513.623, 817.504, 512.956, 828.85, 506.615, 839.028, 500.608, 840.697, 532.978, 842.699, 565.014, 844.201, 575.693, 855.714, 576.694, 867.227, 577.529, 873.901, 577.028, 876.07, 554.503, 877.738, 528.139, 881.121, 478.64, 886.467, 475.299, 891.367, 473.963, 896.935, 475.968, 900.053, 484.877, 903.852, 515.792, 907.189, 520.798, 911.861, 514.291, 916.032, 511.788, 921.204, 508.617, 927.879, 506.115, 933.719, 502.611, 940.727, 501.109, 949.959, 495.436, 955.715, 479.216, 964.892, 474.721, 975.942, 474.346, 990.737, 474.346, 997.875, 470.018, 1009.89, 466.347, 1024.07, 458.505, 1025.57, 480.196, 1027.07, 513.901, 1028.74, 555.448, 1044.65, 554.947, 1061.33, 555.615, 1074.68, 554.781, 1088.37, 554.781, 1089.7, 540.097, 1091.2, 521.243, 1094.04, 507.25, 1097.29, 490.25, 1103.54, 488.25, 1109.29, 490, 1115.06, 488.039, 1120.74, 483.367, 1125.07, 478.194, 1129.41, 476.359, 1134.25, 472.855, 1140.59, 469.184, 1146.85, 465.93, 1151.19, 464.595, 1157.03, 463.761, 1161.36, 461.258, 1165.37, 457.254, 1168.37, 451.914, 1172.38, 447.075, 1176.88, 446.742, 1183.56, 446.408, 1192.85, 442.07, 1199.85, 437.898, 1204.36, 433.226, 1209.03, 429.556, 1214.87, 427.72, 1222.04, 428.554, 1229.55, 429.556, 1240.07, 432.559, 1247.57, 435.729, 1255.92, 439.233, 1263.29, 442.237, 1270.46, 445.24, 1277.47, 448.577)
+width = 1.0
+default_color = Color(0, 1, 0.501961, 1)
+
+[node name="collision" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+
+[node name="UpperLine2D" type="Line2D" parent="."]
+width = 1.0
+default_color = Color(0, 1, 0.501961, 1)
+
+[node name="Biker" parent="." groups=["player"] instance=ExtResource("1_roue2")]
+position = Vector2(87.2614, 341.091)
+collision_layer = 8
+
+[node name="flags_timer" type="Node2D" parent="."]
+
+[node name="f_s" type="Node2D" parent="flags_timer"]
+
+[node name="flag_start" parent="flags_timer/f_s" instance=ExtResource("2_2luas")]
+position = Vector2(64.0592, 87.2994)
+
+[node name="Area2D_flagstart" type="Area2D" parent="flags_timer/f_s"]
+position = Vector2(64.0592, 87.2994)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/f_s/Area2D_flagstart"]
+position = Vector2(-3.26932, -100.133)
+shape = SubResource("RectangleShape2D_ysigv")
+
+[node name="f_f" type="Node2D" parent="flags_timer"]
+position = Vector2(6.66727, 0.419983)
+
+[node name="flag_finish" parent="flags_timer/f_f" instance=ExtResource("3_hrqfr")]
+position = Vector2(1153.14, 236.675)
+
+[node name="Area2D_flagfinish" type="Area2D" parent="flags_timer/f_f"]
+position = Vector2(1153.14, 236.675)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/f_f/Area2D_flagfinish"]
+position = Vector2(-3.10596, -99.7005)
+shape = SubResource("RectangleShape2D_qtisn")
+
+[node name="other" type="Node2D" parent="."]
+
+[node name="lights" type="Node2D" parent="other"]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="other/lights"]
+energy = 0.2
+blend_mode = 1
+range_layer_min = -1
+
+[node name="timer_track" type="Node2D" parent="other"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="other/timer_track"]
+
+[node name="Label" type="Label" parent="other/timer_track/CanvasLayer"]
+offset_left = 2.10224
+offset_top = 1.89202
+offset_right = 66.1022
+offset_bottom = 24.892
+text = "00:00.00"
+
+[node name="name_level" type="Node2D" parent="other"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="other/name_level"]
+
+[node name="Label" type="Label" parent="other/name_level/CanvasLayer"]
+modulate = Color(0.898039, 0.0823529, 0.74902, 0)
+self_modulate = Color(0.898039, 0.0823529, 0.74902, 1)
+material = SubResource("CanvasItemMaterial_wltjj")
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_top = 72.0
+offset_right = 25.0
+offset_bottom = 93.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_srkxl")
+theme_override_font_sizes/font_size = 40
+text = "Level   ' Chasm '"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="other/name_level/CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_whq52")
+}
+
+[node name="FpsScene" parent="." instance=ExtResource("5_ne33r")]
+visible = false
+
+[editable path="BgNeonStreets"]
