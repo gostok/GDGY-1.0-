@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlqus0oeomrja"
-path="res://.godot/imported/Retro BG 4 c.png-d2424c0b760ab49b16541002fd799912.ctex"
+uid="uid://cj7a1d6yrlvtt"
+path="res://.godot/imported/Retro BG 9 b.png-3a77b2c193d96730c8b68e130b4156ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://all_scenes/levels/bg_levels/bg_neon_streets/Retro BG 4 c.png"
-dest_files=["res://.godot/imported/Retro BG 4 c.png-d2424c0b760ab49b16541002fd799912.ctex"]
+source_file="res://all_scenes/levels/bg_levels/bg_neon_streets/Retro BG 9 b.png"
+dest_files=["res://.godot/imported/Retro BG 9 b.png-3a77b2c193d96730c8b68e130b4156ee.ctex"]
 
 [params]
 

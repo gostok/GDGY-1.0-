@@ -96,7 +96,7 @@ range_z_max = 9
 range_layer_min = -2
 texture = ExtResource("3_dxhdt")
 
-[node name="ParallaxLayer3" parent="BgNeonStreets/ParallaxBackground" index="2"]
+[node name="ParallaxLayer3" parent="BgNeonStreets/ParallaxBackground" index="3"]
 position = Vector2(0, 20)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
