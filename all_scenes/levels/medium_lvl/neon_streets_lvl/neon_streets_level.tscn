@@ -123,10 +123,10 @@ collision_layer = 8
 [node name="f_s" type="Node2D" parent="flags_timer"]
 
 [node name="flag_start" parent="flags_timer/f_s" instance=ExtResource("2_2luas")]
-position = Vector2(64.0592, 87.2994)
+position = Vector2(200.573, 372.716)
 
 [node name="Area2D_flagstart" type="Area2D" parent="flags_timer/f_s"]
-position = Vector2(64.0592, 87.2994)
+position = Vector2(200.573, 372.716)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/f_s/Area2D_flagstart"]
 position = Vector2(-3.26932, -100.133)
@@ -136,10 +136,10 @@ shape = SubResource("RectangleShape2D_ysigv")
 position = Vector2(6.66727, 0.419983)
 
 [node name="flag_finish" parent="flags_timer/f_f" instance=ExtResource("3_hrqfr")]
-position = Vector2(1153.14, 236.675)
+position = Vector2(1217.66, 416.51)
 
 [node name="Area2D_flagfinish" type="Area2D" parent="flags_timer/f_f"]
-position = Vector2(1153.14, 236.675)
+position = Vector2(1217.66, 416.51)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flags_timer/f_f/Area2D_flagfinish"]
 position = Vector2(-3.10596, -99.7005)
