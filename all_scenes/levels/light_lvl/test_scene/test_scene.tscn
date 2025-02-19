@@ -188,7 +188,7 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("8_53m1j")
 theme_override_font_sizes/font_size = 40
-text = "Level   ' Vice '"
+text = "' Vice '"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="other/name_level/CanvasLayer"]
 libraries = {

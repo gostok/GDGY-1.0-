@@ -190,7 +190,7 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("4_bl6wt")
 theme_override_font_sizes/font_size = 40
-text = "Level   ' Chasm '"
+text = "' Metropolis Beats '"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="other/name_level/CanvasLayer"]
 libraries = {
@@ -199,5 +199,8 @@ libraries = {
 
 [node name="FpsScene" parent="." instance=ExtResource("5_mklc5")]
 visible = false
+
+[connection signal="body_entered" from="flags_timer/f_s/Area2D_flagstart" to="." method="_on_area_2d_flagstart_body_entered"]
+[connection signal="body_entered" from="flags_timer/f_f/Area2D_flagfinish" to="." method="_on_area_2d_flagfinish_body_entered"]
 
 [editable path="BgMetropolisBeats"]
