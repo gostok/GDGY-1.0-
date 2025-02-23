@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dctsuqdwcbwtp"]
+[gd_scene load_steps=17 format=3 uid="uid://dctsuqdwcbwtp"]
 
 [ext_resource type="Script" path="res://all_scenes/levels/light_lvl/hot_lvl/hot_level.gd" id="1_8ni4v"]
 [ext_resource type="PackedScene" uid="uid://cd188ngfrnj0l" path="res://all_scenes/objects_scenes/flags_scenes/flag_start/flag_start.tscn" id="2_2w8nb"]
@@ -6,12 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="2_sagni"]
 [ext_resource type="PackedScene" uid="uid://x84spmq16m7y" path="res://all_scenes/objects_scenes/flags_scenes/flag_finish/flag_finish.tscn" id="3_lqmtk"]
 [ext_resource type="FontFile" uid="uid://c5hk3tftdjq3g" path="res://assets/fonts/Outrun future Bold.otf" id="5_7l3ge"]
+[ext_resource type="Script" path="res://dialogue/d_scripts/area_d_scripts/d_abyss.gd" id="6_uk03t"]
+[ext_resource type="Resource" uid="uid://s5lek6oggoq" path="res://dialogue/abyss_dialogue.dialogue" id="7_j44i6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yl1gr"]
 size = Vector2(10.4647, 222.138)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y23ex"]
 size = Vector2(10.465, 222.138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w84bu"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uvai5"]
 blend_mode = 1
@@ -136,6 +140,16 @@ shape = SubResource("RectangleShape2D_y23ex")
 
 [node name="dialogues" type="Node2D" parent="other"]
 
+[node name="d_abyss" type="Area2D" parent="other/dialogues"]
+position = Vector2(148.005, 576)
+collision_layer = 129
+collision_mask = 129
+script = ExtResource("6_uk03t")
+dialogue_resource = ExtResource("7_j44i6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="other/dialogues/d_abyss"]
+shape = SubResource("RectangleShape2D_w84bu")
+
 [node name="lights" type="Node2D" parent="other"]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="other/lights"]
@@ -182,5 +196,6 @@ libraries = {
 
 [connection signal="body_entered" from="flags_timer/f_s/Area2D_flagstart" to="." method="_on_area_2d_flagstart_body_entered"]
 [connection signal="body_entered" from="flags_timer/f_f/Area2D_flagfinish" to="." method="_on_area_2d_flagfinish_body_entered"]
+[connection signal="body_entered" from="other/dialogues/d_abyss" to="other/dialogues/d_abyss" method="_on_body_entered"]
 
 [editable path="BgAbyss"]

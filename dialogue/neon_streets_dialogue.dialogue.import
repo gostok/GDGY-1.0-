@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://m6i3xnp6vj6e"
+path="res://.godot/imported/neon_streets_dialogue.dialogue-ca5a259236ea6f01d27455053bb2f774.tres"
+
+[deps]
+
+source_file="res://dialogue/neon_streets_dialogue.dialogue"
+dest_files=["res://.godot/imported/neon_streets_dialogue.dialogue-ca5a259236ea6f01d27455053bb2f774.tres"]
+
+[params]
+
+defaults=true
