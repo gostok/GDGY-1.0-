@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dwveceh7t4hnk"]
+[gd_scene load_steps=19 format=3 uid="uid://dwveceh7t4hnk"]
 
 [ext_resource type="Script" path="res://all_scenes/levels/medium_lvl/neon_streets_lvl/neon_streets_level.gd" id="1_ca5id"]
 [ext_resource type="PackedScene" uid="uid://ci8trx1sym8te" path="res://bike/scripts/biker.tscn" id="1_roue2"]
@@ -8,12 +8,16 @@
 [ext_resource type="FontFile" uid="uid://c5hk3tftdjq3g" path="res://assets/fonts/Outrun future Bold.otf" id="4_srkxl"]
 [ext_resource type="PackedScene" uid="uid://qrqrxxtwa04n" path="res://all_scenes/objects_scenes/fps_sc/fps_scene.tscn" id="5_ne33r"]
 [ext_resource type="PackedScene" uid="uid://y8eygw8sfav5" path="res://all_scenes/levels/bg_levels/bg_neon_streets/bg_neon_streets.tscn" id="6_bnx6f"]
+[ext_resource type="Script" path="res://dialogue/d_scripts/area_d_scripts/d_ns.gd" id="7_4awbv"]
+[ext_resource type="Resource" uid="uid://m6i3xnp6vj6e" path="res://dialogue/neon_streets_dialogue.dialogue" id="8_l6ipq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysigv"]
 size = Vector2(10.4647, 222.138)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtisn"]
 size = Vector2(10.465, 222.138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_us4sh"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wltjj"]
 blend_mode = 1
@@ -147,6 +151,16 @@ shape = SubResource("RectangleShape2D_qtisn")
 
 [node name="other" type="Node2D" parent="."]
 
+[node name="dialogues" type="Node2D" parent="other"]
+
+[node name="Area2D" type="Area2D" parent="other/dialogues"]
+position = Vector2(88.4084, 358.541)
+script = ExtResource("7_4awbv")
+dialogue_resource = ExtResource("8_l6ipq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="other/dialogues/Area2D"]
+shape = SubResource("RectangleShape2D_us4sh")
+
 [node name="lights" type="Node2D" parent="other"]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="other/lights"]
@@ -196,5 +210,6 @@ visible = false
 
 [connection signal="body_entered" from="flags_timer/f_s/Area2D_flagstart" to="." method="_on_area_2d_flagstart_body_entered"]
 [connection signal="body_entered" from="flags_timer/f_f/Area2D_flagfinish" to="." method="_on_area_2d_flagfinish_body_entered"]
+[connection signal="body_entered" from="other/dialogues/Area2D" to="other/dialogues/Area2D" method="_on_body_entered"]
 
 [editable path="BgNeonStreets"]
