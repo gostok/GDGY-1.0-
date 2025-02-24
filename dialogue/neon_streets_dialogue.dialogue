@@ -1,6 +1,5 @@
 ~ start
 do _start_d()
-
 if GlobalBiker.start_ns_biker:
 	~ second
 	% Гоб?: [speed=1.0][shake]Я хочу выйти !!! [/shake]
@@ -11,7 +10,6 @@ if GlobalBiker.start_ns_biker:
 	% Тёмный гид: [speed=0.5]Тебе говорили, что такое [shake]БЕЗУМИЕ[/shake] ?
 	- * Продолжить путь * => END
 	- * Выслушать снова его БРЕД * => first
-
 else:
 	~ first
 	if GlobalBiker.road_dark_guide:
@@ -147,5 +145,6 @@ else:
 			set GlobalBiker.road_pain = true
 			- * Ты принимаешь таблетку * => END
 ~ END
+set GlobalBiker.take_a_drug = true
 do _end_d()
 => END!

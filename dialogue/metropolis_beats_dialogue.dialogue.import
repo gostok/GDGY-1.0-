@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://drvd4yiv4hjgj"
+path="res://.godot/imported/metropolis_beats_dialogue.dialogue-733fef0b1e39621448fdb66c68facd51.tres"
+
+[deps]
+
+source_file="res://dialogue/metropolis_beats_dialogue.dialogue"
+dest_files=["res://.godot/imported/metropolis_beats_dialogue.dialogue-733fef0b1e39621448fdb66c68facd51.tres"]
+
+[params]
+
+defaults=true

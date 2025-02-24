@@ -1,0 +1,18 @@
+~ start
+set GlobalBiker.take_a_drug = false
+do _start_d()
+if GlobalBiker.start_ns_biker:
+	~ second
+	% Гоб?: [speed=1.0][shake]Кто ты ? [/shake]
+	% Тёмный Гид: [speed=0.5]Добро пожаловать в Мегаполис.
+	% Тёмный Гид: [speed=0.5]Неон.[wait=0.3] Шлюхи.[wait=0.3] Наркотики.[wait=0.3] Слава.[wait=0.3]
+	% Гоб?: [speed=1.0][shake]Мы должны остановить его![/shake]
+	% Тёмный Гид: [speed=0.5][shake]Ты не знаешь, с чем имеешь дело...[/shake]
+	% Тёмный гид: [speed=0.5][shake]БЕЗУМИЕ[/shake] разве не повторение одно и того же действия раз за разом ?
+	- * Продолжить путь * => END
+	- * Принять таблетку * 
+		set GlobalBiker.take_a_drug = true 
+		=> END
+	- * Выслушать снова его БРЕД * => first
+else:
+	~ first

@@ -4,16 +4,20 @@ extends Node
 var start_vice_biker: bool = false
 # переменная для проверки, первое ли прохождение карты 'Abyss'
 var start_abyss_biker: bool = false
-var dark_guide: bool = false
 # переменная для проверки, первое ли прохождение карты 'Neon_Streets'
 var start_ns_biker: bool = false
-
+# переменная для проверки, первое ли прохождение карты 'Metropolis_Beats'
+var start_mb_biker: bool = false
 
 # Переменные для разных концовок сюжета игры
 var road_pain: bool = false
 var road_sinner: bool = false
 var road_WagerWithGod: bool = false
 var road_dark_guide: bool = false
+
+# Переменные для разных изменений в ходе сюжета
+var dark_guide: bool = false
+var take_a_drug: bool = false
 
 
 # Переменная для хранения количества смертей

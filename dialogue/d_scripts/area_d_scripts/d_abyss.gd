@@ -28,7 +28,3 @@ func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
 		print('true')
 		action()
-
-
-func _start_d():
-	print("_start_d()")
