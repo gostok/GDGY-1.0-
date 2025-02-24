@@ -17,7 +17,7 @@ size = Vector2(10.4647, 222.138)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtisn"]
 size = Vector2(10.465, 222.138)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_us4sh"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kmf1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wltjj"]
 blend_mode = 1
@@ -119,7 +119,7 @@ width = 1.0
 default_color = Color(0, 1, 0.501961, 1)
 
 [node name="Biker" parent="." groups=["player"] instance=ExtResource("1_roue2")]
-position = Vector2(87.2614, 341.091)
+position = Vector2(84.8776, 313.545)
 collision_layer = 8
 
 [node name="flags_timer" type="Node2D" parent="."]
@@ -154,12 +154,14 @@ shape = SubResource("RectangleShape2D_qtisn")
 [node name="dialogues" type="Node2D" parent="other"]
 
 [node name="Area2D" type="Area2D" parent="other/dialogues"]
-position = Vector2(88.4084, 358.541)
+collision_layer = 129
+collision_mask = 129
 script = ExtResource("7_4awbv")
 dialogue_resource = ExtResource("8_l6ipq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="other/dialogues/Area2D"]
-shape = SubResource("RectangleShape2D_us4sh")
+position = Vector2(85.8165, 345.385)
+shape = SubResource("RectangleShape2D_1kmf1")
 
 [node name="lights" type="Node2D" parent="other"]
 

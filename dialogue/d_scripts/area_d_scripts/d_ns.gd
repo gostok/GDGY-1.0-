@@ -24,11 +24,12 @@ func action() -> void:
 	DialogueManager.show_example_dialogue_balloon(dialogue_resource, dialogue_string)
 
 
+
+func _start_d():
+	print("_start_d()")
+
+
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
 		print('true')
 		action()
-
-
-func _start_d():
-	print("_start_d()")
