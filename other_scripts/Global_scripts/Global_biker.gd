@@ -13,11 +13,14 @@ var start_mb_biker: bool = false
 var road_pain: bool = false
 var road_sinner: bool = false
 var road_WagerWithGod: bool = false
-var road_dark_guide: bool = false
+var road_dark_guide: bool = true
 
 # Переменные для разных изменений в ходе сюжета
 var dark_guide: bool = false
 var take_a_drug: bool = false
+
+# Переменные для отссылок к другим играм, фильмам, или книгам
+var link_the_witcher = false
 
 
 # Переменная для хранения количества смертей

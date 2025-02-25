@@ -153,13 +153,13 @@ shape = SubResource("RectangleShape2D_qtisn")
 
 [node name="dialogues" type="Node2D" parent="other"]
 
-[node name="Area2D" type="Area2D" parent="other/dialogues"]
+[node name="d_ns" type="Area2D" parent="other/dialogues"]
 collision_layer = 129
 collision_mask = 129
 script = ExtResource("7_4awbv")
 dialogue_resource = ExtResource("8_l6ipq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="other/dialogues/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="other/dialogues/d_ns"]
 position = Vector2(85.8165, 345.385)
 shape = SubResource("RectangleShape2D_1kmf1")
 
@@ -212,6 +212,6 @@ visible = false
 
 [connection signal="body_entered" from="flags_timer/f_s/Area2D_flagstart" to="." method="_on_area_2d_flagstart_body_entered"]
 [connection signal="body_entered" from="flags_timer/f_f/Area2D_flagfinish" to="." method="_on_area_2d_flagfinish_body_entered"]
-[connection signal="body_entered" from="other/dialogues/Area2D" to="other/dialogues/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="other/dialogues/d_ns" to="other/dialogues/d_ns" method="_on_body_entered"]
 
 [editable path="BgNeonStreets"]
